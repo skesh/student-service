@@ -1,0 +1,59 @@
+<div class="container" fxLayout.gt-md="row" fxLayout.lt-lg="column"
+     fxLayoutAlign.gt-md="space-between" fxLayoutAlign.lt-lg="center center">
+  <div class="grid80">
+    <div fxLayout="column" fxLayoutAlign.lt-lg="center center" fxLayoutGap.lt-lg="12px"
+         fxLayoutGap.gt-md="18px">
+      <div class="footer-title">Контакты</div>
+      <span class="footer-description text">По любым вопросам свяжитесь с нами любым удобным для вас
+        способом</span>
+    </div>
+
+    <div fxLayout fxLayoutGap.gt-md="150px" fxLayoutAlign.lt-lg="center">
+      <div fxLayout="column" fxLayoutGap.gt-md="25px" fxLayoutGap.lt-lg="15px"
+           fxLayoutAlign.lt-lg="center center">
+        <span class="city">г. {{contacts.KHV.CITY}}</span>
+        <a class="contact-item text" [href]="'mailto:' + contacts.KHV.EMAIL">
+          {{contacts.KHV.EMAIL}}
+        </a>
+        <a class="contact-item text" [href]="'tel:' + contacts.KHV.PHONE">
+          {{contacts.KHV.PHONE | phoneMask}}
+        </a>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap.gt-md="25px" fxLayoutGap.lt-lg="15px"
+           fxLayoutAlign.lt-lg="center center">
+        <span class="city">г. {{contacts.KOMS.CITY}}</span>
+        <a class="contact-item text" [href]="'mailto:' + contacts.KHV.EMAIL">
+          {{contacts.KHV.EMAIL}}
+        </a>
+        <a class="contact-item text" [href]="'tel:' + contacts.KOMS.PHONE">
+          {{contacts.KOMS.PHONE | phoneMask}}
+        </a>
+      </div>
+    </div>
+
+    <div class="soc-icons" fxLayout fxLayoutGap="16px" fxHide.lt-lg>
+      <a [href]="'tg://resolve?domain=' + telegram | safe: 'url'" class="soc-icon-telegram"
+         *ngIf="telegram"></a>
+      <a [href]="'whatsapp://send?phone=' + whatsapp | safe: 'url'" class="soc-icon-whatsapp"
+         *ngIf="whatsapp"></a>
+      <a [href]="youtube | safe: 'url'" class="soc-icon-youtube" *ngIf="youtube"></a>
+      <a [href]="vk | safe: 'url'" class="soc-icon-vk" *ngIf="vk"></a>
+      <a [href]="insta | safe: 'url'" class="soc-icon-insta" *ngIf="insta"></a>
+    </div>
+  </div>
+
+  <ng-container *ngIf="isFeedbackFormVisible">
+    <app-feedback (completed)="toggleFeedbackForm()" [isShowPhraseVisible]="true"></app-feedback>
+  </ng-container>
+
+  <div class="soc-icons" fxLayout fxLayoutGap="16px" fxHide.gt-md>
+    <a [href]="'tg://resolve?domain=' + telegram | safe: 'url'" class="soc-icon-telegram"
+       *ngIf="telegram"></a>
+    <a [href]="'whatsapp://send?phone=' + whatsapp | safe: 'url'" class="soc-icon-whatsapp"
+       *ngIf="whatsapp"></a>
+    <a [href]="youtube | safe: 'url'" class="soc-icon-youtube" *ngIf="youtube"></a>
+    <a [href]="vk | safe: 'url'" class="soc-icon-vk" *ngIf="vk"></a>
+    <a [href]="insta | safe: 'url'" class="soc-icon-insta" *ngIf="insta"></a>
+  </div>
+</div>

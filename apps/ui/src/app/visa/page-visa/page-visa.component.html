@@ -1,0 +1,43 @@
+<div class="airlines" fxLayout="column">
+  <div class="container" fxLayout.gt-md="row" fxLayout.lt-lg="column">
+    <div class="left-block">
+      <div fxLayout="column" fxLayoutAlign="start start">
+        <h1>Оформление визы</h1>
+
+        <span class="annotation">Если Вы собираетесь поехать за рубеж в гости, в командировку,
+          на учебу, или в тур и не знаете, как открыть визу, мы вам поможем!
+        </span>
+
+        <div fxLayout class="quote">
+          <mat-icon class="icon" svgIcon="quote"></mat-icon>
+          <span class="text">{{text}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-block">
+      <div class="passport"></div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="offers$ | async as offers">
+  <app-block [color]="'grey'" [title]="'При оформлении визы мы предоставляем:'"
+             [titlePosition]="'left'" *ngIf="offers.length">
+    <app-block-offers [offers]="offers"></app-block-offers>
+  </app-block>
+</ng-container>
+
+<ng-container *ngIf="visas$ | async as visas">
+  <app-block [title]="'Прайс за услуги'" [titlePosition]="'left'" [color]="'white'" class="price">
+    <app-block-price [directions]="visas"></app-block-price>
+  </app-block>
+</ng-container>
+
+<ng-container *ngIf="questions$ | async as questions">
+  <ng-container *ngIf="questions.length">
+    <app-block [color]="'grey'" [title]="'Часто задаваемые вопросы'">
+      <app-questions [questions]="questions"></app-questions>
+    </app-block>
+  </ng-container>
+</ng-container>

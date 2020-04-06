@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+mat-sidenav {
+  padding: 20px;
+}
+
+mat-sidenav-content {
+  padding: 40px;
+  min-height: calc(100vh - 144px);
+}
+
+mat-list-item {
+  color: var(--color-blue-deep);
+  cursor: pointer;
+
+  &.active {
+    color: var(--color-blue);
+    font-weight: 500;
+  }
+}
+
+app-login {
+  margin: auto;
+}

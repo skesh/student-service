@@ -1,0 +1,20 @@
+<div class="content" [formGroup]="form" (ngSubmit)="addFeedback()" fxLayoutGap.gt-md="40px"
+     fxLayoutGap.lt-lg="25px" fxLayout="column">
+  <div fxLayout="column" fxLayoutAlign="start start">
+    <h2>Свяжитесь с нами!</h2>
+    <span class="phrase" *ngIf="isShowPhraseVisible">Или вы можете сразу сформировать заявку</span>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="20px">
+    <div fxLayout fxLayoutGap="12px">
+      <div *ngFor="let channel of types" (click)="type = channel.type" [class]="channel.class"
+           [class.active]="channel.type === type"></div>
+    </div>
+
+    <input type="text" [placeholder]="placeholder" formControlName="contact">
+    <input type="text" placeholder="Как вас зовут?" formControlName="name">
+  </div>
+</div>
+
+<button type="submit" class="send" [disabled]="form.invalid"
+        (click)="addFeedback()">Отправить</button>

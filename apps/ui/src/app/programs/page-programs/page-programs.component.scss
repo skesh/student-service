@@ -1,0 +1,43 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white-dark) !important;
+}
+
+h1 {
+  @include layout-bp(lt-lg) {
+    text-align: center;
+  }
+}
+
+.programs-filter {
+  display: flex;
+  height: 230px;
+  align-items: center;
+  color: white;
+}
+
+.content {
+  @include layout-bp(gt-md) {
+    margin: 40px auto;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin: 30px auto;
+  }
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+app-select {
+  @include layout-bp(lt-lg) {
+    margin-bottom: 10px;
+  }
+}

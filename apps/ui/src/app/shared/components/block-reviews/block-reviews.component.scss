@@ -1,0 +1,87 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white-dark);
+
+  @include layout-bp(gt-md) {
+    border-radius: 16px;
+    padding: 60px 80px 80px;
+    margin: 0 -80px;
+  }
+
+  @include layout-bp(lt-lg) {
+    padding: 30px 0;
+    align-items: center;
+  }
+}
+
+app-card-program {
+  margin-top: 80px;
+}
+
+.controls {
+  .currentItem {
+    font-family: var(--rounded-light);
+    color: var(--color-grey);
+
+    @include layout-bp(gt-md) {
+      font-size: 48px;
+      line-height: 40px;
+    }
+
+    @include layout-bp(lt-lg) {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  .totalItems {
+    font-family: var(--rounded-thin);
+    color: var(--color-grey-light);
+
+    @include layout-bp(gt-md) {
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    @include layout-bp(lt-lg) {
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
+
+  %navigation-button {
+    cursor: pointer;
+    fill: var(--color-orange);
+
+    &.disable {
+      fill: var(--color-grey-light);
+      cursor: unset;
+    }
+  }
+
+  .prev {
+    @extend %navigation-button;
+
+    height: 33px;
+    width: 33px;
+  }
+
+  .next {
+    @extend %navigation-button;
+
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.block-content {
+  display: flex;
+  justify-content: center;
+
+  @include layout-bp(lt-lg) {
+    margin-top: 30px;
+  }
+}

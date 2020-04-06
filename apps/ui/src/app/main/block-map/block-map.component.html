@@ -1,0 +1,18 @@
+<div fxLayout
+     fxLayoutGap="4px"
+     fxLayoutAlign="center"
+     class="map-buttons">
+  <button class="btn-orange"
+          *ngFor="let country of countries"
+          (mouseover)="set(country)">{{country.label}}</button>
+</div>
+
+<div fxLayout
+     fxLayoutAlign="center center"
+     class="map-container">
+  <div class="map">
+    <div class="country-map"
+         [style.background-image]="selectedCountry.image | safe: 'style-url'">
+    </div>
+  </div>
+</div>

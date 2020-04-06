@@ -1,0 +1,46 @@
+<a class="program-card shadow" [routerLink]="['/programs', program.id]" [class.inline]="inline"
+   [ngClass]="program?.type">
+  <ng-container *ngIf="smallImage$ | async as url; else noImage">
+    <div class="image" [style.background-image]="url | safe: 'style-url'">
+      <span *ngIf="small" class="small-title">{{program?.title}}</span>
+    </div>
+  </ng-container>
+
+  <ng-template #noImage>
+    <div class="image" fxLayout fxLayoutAlign="center center"> </div>
+  </ng-template>
+
+  <div class="program-details" fxLayout="column" fxLayoutAlign="start start"
+       fxLayoutGap.gt-md="15px" fxLayoutGap.lt-lg="10px" *ngIf="!small">
+    <div class="title">{{program.title}}</div>
+
+    <div class="line"></div>
+
+    <div fxLayout fxLayoutGap.gt-md="20px" fxLayoutGap.lt-lg="14px" class="items">
+      <div class="item">
+        <mat-icon>event</mat-icon>
+        <span>{{program.days}} {{declOfDays(program.days)}}</span>
+      </div>
+
+      <div class="item" *ngIf="program?.ageFrom && program?.ageTo">
+        <mat-icon>person</mat-icon>
+        <span>{{program.ageFrom}} - {{program.ageTo}} лет</span>
+      </div>
+    </div>
+
+    <ng-container *ngIf="reviews$ | async as reviews">
+      <div fxLayout fxLayoutAlign="start center" fxLayoutGap="8px" *ngIf="reviews.length"
+           fxHide.lt-lg class="reviews">
+
+        <div fxLayout>
+          <ng-container *ngFor="let review of reviews.slice(0, 4)">
+            <app-user-circle [image]="review?.photo" [firstname]="review?.firstname"
+                             [lastname]="review?.lastname"></app-user-circle>
+          </ng-container>
+        </div>
+
+        <span class="reviews-count">{{reviews.length}} {{declOfReviews(reviews.length)}}</span>
+      </div>
+    </ng-container>
+  </div>
+</a>

@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+.items {
+    margin-top: 40px;
+}
+
+.item {
+    display: flex;
+    height: 180px;
+    width: 180px;
+    border-radius: 4px;
+    background-color: white;
+}

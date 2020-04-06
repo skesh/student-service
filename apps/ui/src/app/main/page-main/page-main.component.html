@@ -1,0 +1,54 @@
+<app-block-main-image></app-block-main-image>
+
+<app-block [color]="'white'">
+  <div class="main-title">
+    <div class="text">По всей планете</div>
+    <div class="question">Какую стану вы выберите?</div>
+  </div>
+
+  <app-block-map></app-block-map>
+</app-block>
+
+<app-block [color]="'black'">
+  <div class="main-title --white">
+    <div class="text">Наши преимущества</div>
+    <div class="question">Какую страну выберите?</div>
+  </div>
+
+  <app-block-advantages></app-block-advantages>
+</app-block>
+
+<app-block [color]="'white'">
+  <div class="main-title">
+    <div class="text">Горящие программы!</div>
+    <div class="question">Успейте забронировать!</div>
+  </div>
+
+  <ng-container *ngIf="hotPrograms$ | async as programs">
+    <app-block-programs [programs]="programs"></app-block-programs>
+  </ng-container>
+</app-block>
+
+<app-block [color]="'white'">
+  <div class="main-title">
+    <div class="text">Впечатления от участников</div>
+    <div class="question">Что о нас говорят?</div>
+  </div>
+
+  <ng-container *ngIf="reviews$ | async as reviews">
+    <app-block-reviews [reviews]="reviews"></app-block-reviews>
+  </ng-container>
+</app-block>
+
+<app-block [color]="'dark'">
+  <div class="main-title --white">
+    <div class="text">Новости и события</div>
+    <div class="question">Успейте забронировать!</div>
+  </div>
+
+  <div class="grid" *ngIf="articles$ | async as articles">
+    <app-article-card [article]="article" *ngFor="let article of articles"></app-article-card>
+  </div>
+
+  <a [routerLink]="['/blog', {filter: 'news'}]" class="all-news">ПОСМОТРЕТЬ ВСЕ НОВОСТИ</a>
+</app-block>

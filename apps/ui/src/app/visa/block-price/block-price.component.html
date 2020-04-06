@@ -1,0 +1,45 @@
+<div class="header">
+  <div class="cell country">Страна</div>
+  <div class="cell type">Тип визы / срок пребывания</div>
+  <div class="cell registration">Срок оформления</div>
+  <div class="cell price">Стоимость</div>
+  <div class="cell docs">Документы</div>
+</div>
+
+<ng-container *ngIf="countries$ | async as countries">
+  <div *ngFor="let direction of items; trackBy: trackByFn" fxLayout class="direction dashed-border">
+    <div fxLayout fxLayoutGap="10px" class="country ">
+      <app-image [url]="getCountryName(direction[0], countries)?.flag" [height]="'32px'"
+                 [width]="'32px'">
+      </app-image>
+      <span>{{getCountryName(direction[0], countries)?.name}}</span>
+    </div>
+
+    <div fxLayout="column" fxFlex="100%">
+      <div *ngFor="let program of direction[1]" fxLayout class="details ">
+
+        <div class="type" fxLayout fxLayoutAlign="start center">
+          <div class="type-container">
+            <div class="direction-type" [ngClass]="program.type">
+              {{visaTypeEnum[program.type]}}</div>
+          </div>
+
+          <span>{{program.period}}</span>
+        </div>
+
+        <span class="registration">{{program.registration}}</span>
+
+        <div class="price" fxLayout fxLayoutGap="4px">
+          <span>{{program.price }}</span>
+          <span>{{program?.addons}}</span>
+        </div>
+
+        <div class="docs" fxLayout>
+          <ng-container *ngIf="program?.pdf as url">
+            <app-pdf-link [url]="url"></app-pdf-link>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

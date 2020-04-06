@@ -1,0 +1,11 @@
+<ng-container *ngIf="!isAdminMode">
+  <div class="container">
+    <app-header></app-header>
+  </div>
+</ng-container>
+
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="!isAdminMode">
+  <app-footer></app-footer>
+</ng-container>

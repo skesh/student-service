@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-progress-spinner {
+  height: 36px;
+  width: 36px;
+}

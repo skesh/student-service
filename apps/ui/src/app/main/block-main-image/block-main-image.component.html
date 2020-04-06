@@ -1,0 +1,19 @@
+<section class="container">
+  <div class="main-image" fxLayout="column" fxLayoutGap="60px">
+    <div class="title">Поездки в разные страны на:</div>
+
+    <div fxLayout="column" fxLayoutAlign.lt-lg="start center" fxLayoutGap.lt-lg="10px" fxHide.lt-lg>
+      <a class="point" *ngFor="let item of menu" [routerLink]="item.url" [ngClass]="item.class">
+        <div fxLayout="column" fxLayoutAlign.gt-md="start start"
+             fxLayoutAlign.lt-lg="center center">
+          <span class="name">{{item.name}}</span>
+          <span class="second" *ngIf="item.second">{{item.second}}</span>
+        </div>
+
+        <mat-icon class="arrow" fxHide.lt-lg>keyboard_arrow_right</mat-icon>
+      </a>
+    </div>
+
+    <app-swiper [menu]="menu" fxHide.gt-md></app-swiper>
+  </div>
+</section>

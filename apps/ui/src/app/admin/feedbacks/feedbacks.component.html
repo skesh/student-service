@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="feedbacks$ | async">
+  <ng-container matColumnDef="created">
+    <th mat-header-cell *matHeaderCellDef>Оставлено</th>
+    <td mat-cell *matCellDef="let element">
+      {{getDate(element?.created) | date: 'dd.MM.yyyy'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Имя</th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Канал связи</th>
+    <td mat-cell *matCellDef="let element">{{element.type}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="contact">
+    <th mat-header-cell *matHeaderCellDef>Контакт</th>
+    <td mat-cell *matCellDef="let element">{{element.contact}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Действия</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="afs.deleteItem('feedbacks', element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

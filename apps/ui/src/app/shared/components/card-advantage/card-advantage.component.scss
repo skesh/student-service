@@ -1,0 +1,71 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed #525252;
+  border-radius: 4px;
+  overflow: hidden;
+
+  @include layout-bp(gt-md) {
+    width: 288px;
+    height: 250px;
+    justify-content: center;
+  }
+
+  @include layout-bp(lt-lg) {
+    height: 60px;
+    width: 295px;
+    padding: 20px;
+    flex-direction: row;
+  }
+
+  &:hover {
+    border-color: white;
+  }
+
+  .icon {
+    display: block;
+    height: 60px;
+    width: 60px;
+    flex-shrink: 0;
+
+    @include layout-bp(lt-lg) {
+      margin-right: 15px;
+    }
+  }
+
+  &:nth-child(1) .icon {
+    color: #db3837 !important;
+  }
+}
+
+.advantage-body {
+  color: white;
+
+  @include layout-bp(lt-lg) {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  @include layout-bp(gt-md) {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+.description {
+  color: var(--color-grey-light);
+
+  @include layout-bp(gt-md) {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  @include layout-bp(lt-lg) {
+    font-size: 11px;
+    text-align: left;
+  }
+}

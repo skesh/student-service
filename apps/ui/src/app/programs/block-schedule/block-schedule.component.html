@@ -1,0 +1,11 @@
+<h2>Распорядок дня</h2>
+
+<div fxLayout class="schedule-list shadow">
+  <div class="line"></div>
+  <div class="schedule-grid">
+    <ng-container *ngFor="let event of events">
+      <span class="time" *ngIf="getDate(event.time) as time">{{time | date: 'HH:mm'}}</span>
+      <div class="name">{{event.description}}</div>
+    </ng-container>
+  </div>
+</div>

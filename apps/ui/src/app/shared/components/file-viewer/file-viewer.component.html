@@ -1,0 +1,19 @@
+<ng-container *ngIf="url$ | async as fileUrl">
+   <img [src]="fileUrl">
+</ng-container>
+
+<ng-container *ngIf="text; else defaultText">
+   <span>{{text}}</span>
+</ng-container>
+
+<ng-template #defaultText>
+   <ng-container *ngIf="matadata$ | async as meta">
+      <pre>{{meta | json}}</pre>
+   </ng-container>
+</ng-template>
+
+<div class="operations">
+   <button mat-icon-button (click)="delete(url)">
+      <mat-icon>delete</mat-icon>
+   </button>
+</div>

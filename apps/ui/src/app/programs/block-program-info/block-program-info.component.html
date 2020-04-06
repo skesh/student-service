@@ -1,0 +1,17 @@
+<div class="info" fxLayoutGap="25px" fxLayout="column">
+  <div fxLayout *ngIf="program?.ageFrom && program?.ageTo">
+    <span class="field-name">Возраст:</span>
+    <span class="field-value">{{program.ageFrom}} - {{program.ageTo}} лет</span>
+  </div>
+
+  <div fxLayout *ngIf="program?.days">
+    <span class="field-name">Дней:</span>
+    <span class="field-value">{{program.days}}</span>
+  </div>
+</div>
+
+<div class="description" *ngIf="program?.description" [class.reduced]="!isExpanded"
+     [innerHTML]="isExpanded ? program?.description : program?.description.slice(0, 350)">
+</div>
+
+<div *ngIf="!isExpanded" (click)="isExpanded = !isExpanded" class="expand">подробнее</div>

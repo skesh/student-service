@@ -1,0 +1,50 @@
+<ng-container *ngIf="priceFields?.length">
+  <app-dynamic-form [fields]="priceFields" (save)="add($event)"></app-dynamic-form>
+</ng-container>
+
+<ng-container *ngIf="countries$ | async as countries">
+  <table mat-table [dataSource]="visas$ | async">
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef>Страна</th>
+      <td mat-cell *matCellDef="let element">{{getCountryName(element.countryId, countries)?.name}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Тип</th>
+      <td mat-cell *matCellDef="let element">{{visaTypeEnum[element.type]}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="period">
+      <th mat-header-cell *matHeaderCellDef>Срок пребывания</th>
+      <td mat-cell *matCellDef="let element">{{element.period}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="registration">
+      <th mat-header-cell *matHeaderCellDef>Срок оформления</th>
+      <td mat-cell *matCellDef="let element">{{element.registration}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Стоимость</th>
+      <td mat-cell *matCellDef="let element">{{element.price}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="addons">
+      <th mat-header-cell *matHeaderCellDef>Комментарий к стоимости</th>
+      <td mat-cell *matCellDef="let element">{{element.addons}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Действия</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="delete(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</ng-container>

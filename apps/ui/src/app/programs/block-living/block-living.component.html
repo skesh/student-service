@@ -1,0 +1,24 @@
+<div fxLayout fxLayoutAlign="space-between center">
+  <h2>Проживание</h2>
+  <div fxLayout fxLayoutGap="8px" fxLayoutAlign="start center" *ngIf="residences?.length > 1">
+    <div class="circle" *ngFor="let circle of residences; let i = index" [class.active]="current ===
+    i" (click)="setIndex(i)"></div>
+  </div>
+</div>
+
+<div class="block-living shadow" fxLayout="column">
+  <ng-container *ngIf="image$ | async as image">
+    <div class="image" [style.background-image]="image | safe: 'style-url'">
+      <div class="navigation" *ngIf="residences?.length > 1">
+        <mat-icon class="prev" (click)="prev()" svgIcon="arrow2"></mat-icon>
+        <mat-icon class="next" (click)="next()" svgIcon="arrow2"></mat-icon>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="text" fxLayout="column">
+    <app-quote [text]="activeResidence?.description" [maxLength]="'180px'"
+               *ngIf="activeResidence?.description">
+    </app-quote>
+  </div>
+</div>

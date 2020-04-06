@@ -1,0 +1,30 @@
+<div class="airlines" fxLayout="column">
+  <div class="container">
+
+    <div fxLayout fxLayout.gt-md="row" fxLayout.lt-lg="column">
+      <div class="left-block" fxLayout="column">
+        <h1>О компании</h1>
+
+        <span class="annotation">Изучаем язык - познаем мир!</span>
+
+        <div fxLayout class="quote">
+          <mat-icon class="icon" svgIcon="quote"></mat-icon>
+          <span class="text">{{quote}}</span>
+        </div>
+      </div>
+
+      <div class="right-block">
+        <div class="big-logo"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-block [title]="'Наши партнёры'" [color]="'grey'">
+  <div class="partners-grid">
+    <div class="partner-logo shadow" *ngFor="let logo of partners"
+         [style.background-image]="logo.url | safe: 'style-url'">
+    </div>
+  </div>
+</app-block>

@@ -1,0 +1,55 @@
+<div class="airlines info-page-header --green">
+  <div class="container">
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <span class="header-title">Каникулы за границей</span>
+
+      <span class="header-text">Компания Students Service предлагает различные варианты
+        программ<br>языковых курсов на время каникул за рубежом для школьников разных
+        возрастов.</span>
+
+      <div class="map"></div>
+    </div>
+
+    <div class="tabs --green">
+      <div *ngFor="let tab of tabs.options" [class.active]="tab == tabs.active" class="tab"
+           (click)="tabs.active = tab">{{tab}}</div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="tabs.active === 'Каникулы'">
+  <app-block [color]="'grey'">
+    <div fxLayout>
+      <mat-icon svgIcon="quote" class="quote">quote</mat-icon>
+      <app-quote [text]="quote"></app-quote>
+    </div>
+  </app-block>
+
+  <app-block [color]="'white'" fxHide.lt-lg>
+    <div class="vacations-image"></div>
+  </app-block>
+
+  <ng-container *ngIf="reviews$ | async as reviews">
+    <app-block [title]="'Отзывы участников'" [color]="'grey'" *ngIf="reviews.length">
+      <app-block-reviews [reviews]="reviews"></app-block-reviews>
+    </app-block>
+  </ng-container>
+
+  <ng-container *ngIf="upcommingPrograms$ | async as programs">
+    <app-block [color]="'white'" [title]="'Ближайшие смены'" *ngIf="programs.length">
+      <app-block-programs [programs]="programs"></app-block-programs>
+    </app-block>
+  </ng-container>
+
+  <ng-container *ngIf="questions$ | async as questions">
+    <app-block [color]="'grey'" [title]="'Часто задаваемые вопросы'" *ngIf="questions.length">
+      <app-questions [questions]="questions"></app-questions>
+    </app-block>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="tabs.active === 'Программы'">
+  <app-block *ngIf="programs$ | async as programs" [color]="'grey'">
+    <app-programs-grid [programs]="programs"></app-programs-grid>
+  </app-block>
+</ng-container>

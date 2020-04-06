@@ -1,0 +1,12 @@
+<button (menuClosed)="menuToggle()" (menuOpened)="menuToggle()" [matMenuTriggerFor]="menu"
+        class="rounded btn-orange">
+  {{value}}
+  <mat-icon>{{open ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu" class="menu">
+  <button (click)="writeValue(option)" *ngFor="let option of options"
+          [class.selected]="option === val" class="option" mat-menu-item>
+    {{option}}
+  </button>
+</mat-menu>

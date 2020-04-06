@@ -1,0 +1,20 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  @include layout-bp(gt-md) {
+    padding: 80px 0;
+  }
+
+  @include layout-bp(lt-lg) {
+    padding: 60px 20px;
+  }
+}
+
+h1 {
+  @include layout-bp(lt-lg) {
+    text-align: center;
+  }
+}

@@ -1,0 +1,17 @@
+<ng-container *ngIf="atricle$ | async as article">
+  <div class="articles-filter airlines">
+    <div class="container">
+      <h1 class="white">{{article.name}}</h1>
+    </div>
+  </div>
+
+  <div class="container article">
+    <div fxLayout fxLayoutGap.gt-md="100px" fxLayoutGap.lt-lg="40px" fxLayoutAlign="start center">
+      <ng-container *ngIf="image$ | async as image">
+        <div class="image" [style.background-image]="image | safe: 'style-url'"></div>
+      </ng-container>
+    </div>
+
+    <div class="article-content" [innerHTML]="article.text"></div>
+  </div>
+</ng-container>

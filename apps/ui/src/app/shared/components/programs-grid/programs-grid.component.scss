@@ -1,0 +1,34 @@
+@import '~@angular/flex-layout/mq';
+
+.programs-grid {
+  display: grid;
+
+  @include layout-bp(gt-md) {
+    grid-template-columns: repeat(4, 290px);
+    grid-gap: 40px;
+  }
+
+  @include layout-bp(lt-lg) {
+    grid-template-columns: repeat(2, 335px);
+    grid-gap: 20px;
+  }
+
+  @include layout-bp(lt-md) {
+    grid-template-columns: repeat(1, 335px);
+    grid-gap: 10px;
+  }
+}
+
+.no-programs {
+  color: var(--color-blue-dark);
+
+  @include layout-bp(gt-md) {
+    margin: 40px auto;
+    font-size: 28px;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin: 20px auto;
+    font-size: 18px;
+  }
+}

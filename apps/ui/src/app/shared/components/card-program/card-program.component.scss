@@ -1,0 +1,164 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  border-radius: 4px;
+}
+
+.program-card {
+  display: flex;
+  color: var(--color-grey);
+  text-decoration: unset;
+
+  @include layout-bp(gt-md) {
+    flex-direction: column;
+
+    &.inline {
+      height: 200px;
+      flex-direction: row;
+      width: 580px;
+    }
+  }
+
+  .line {
+    display: flex;
+    flex-shrink: 0;
+    height: 2px;
+    background-color: var(--color-black);
+
+    @include layout-bp(gt-md) {
+      width: 40px;
+    }
+
+    @include layout-bp(lt-lg) {
+      width: 30px;
+    }
+  }
+
+  &.learning {
+    mat-icon {
+      color: var(--color-orange);
+    }
+
+    .line {
+      background-color: var(--color-orange);
+    }
+  }
+
+  &.vacations {
+    mat-icon {
+      color: var(--color-green);
+    }
+
+    .line {
+      background-color: var(--color-green);
+    }
+  }
+
+  &.internship {
+    mat-icon {
+      color: var(--color-blue);
+    }
+
+    .line {
+      background-color: var(--color-blue);
+    }
+  }
+}
+
+.image {
+  display: flex;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  align-items: flex-end;
+  overflow: hidden;
+  // background-color: white;
+  background-color: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+
+  @include layout-bp(lt-lg) {
+    height: 110px;
+    width: 160px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  @include layout-bp(gt-md) {
+    height: 200px;
+    width: 290px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .small-title {
+    font-size: 18px;
+    height: 40px;
+    color: white;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  }
+}
+
+.program-details {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  flex-shrink: 0;
+
+  @include layout-bp(gt-md) {
+    height: 200px;
+    width: 290px;
+    padding: 20px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  @include layout-bp(lt-lg) {
+    height: 110px;
+    width: 175px;
+    padding: 10px 5px 10px 10px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .title {
+    @include layout-bp(lt-lg) {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    @include layout-bp(gt-md) {
+      font-size: 18px;
+      max-height: 54px;
+      overflow: hidden;
+    }
+  }
+}
+
+.items {
+  @include layout-bp(lt-lg) {
+    margin-top: auto;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+
+  span {
+    font: var(--rounded-medium);
+
+    @include layout-bp(gt-md) {
+      font-size: 12px;
+      margin-left: 7px;
+    }
+
+    @include layout-bp(lt-lg) {
+      font-size: 9px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.reviews {
+  margin-top: auto;
+}
+
+.reviews-count {
+  color: var(--color-grey-light);
+}

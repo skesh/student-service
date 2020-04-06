@@ -1,0 +1,68 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-grey-light);
+  font-family: var(--rounded-medium);
+  background-color: white;
+  border-radius: 4px;
+
+  @include layout-bp(gt-md) {
+    padding: 22px 20px;
+    font-size: 16px;
+  }
+
+  @include layout-bp(lt-lg) {
+    padding: 15px;
+    font-size: 12px;
+    width: 900px;
+  }
+
+  @include layout-bp(lt-md) {
+    padding: 15px;
+    font-size: 12px;
+    width: 520px;
+  }
+
+  @include layout-bp(lt-sm) {
+    padding: 15px;
+    font-size: 12px;
+    width: 300px;
+  }
+
+  .expand {
+    color: var(--color-grey-light);
+
+    @include layout-bp(gt-md) {
+      font-size: 24px;
+    }
+
+    @include layout-bp(lt-lg) {
+      font-size: 17px;
+    }
+  }
+
+  .question {
+    &.active span {
+      color: var(--color-orange) !important;
+    }
+
+    &.active .expand {
+      fill: var(--color-orange) !important;
+    }
+  }
+
+  &:hover .question {
+    color: var(--color-black);
+    cursor: pointer;
+  }
+
+  &:hover .question .expand {
+    fill: var(--color-black);
+  }
+}
+
+.answer {
+  margin-top: 25px;
+}

@@ -1,0 +1,53 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  border-radius: 4px;
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  text-decoration: unset;
+
+  @include layout-bp(gt-md) {
+    height: 180px;
+    width: 360px;
+  }
+
+  @include layout-bp(lt-lg) {
+    height: 150px;
+    width: 295px;
+  }
+}
+
+.date {
+  color: var(--color-grey-light);
+
+  @include layout-bp(lt-lg) {
+    font-size: 11px;
+  }
+}
+
+.title {
+  font-size: 18px;
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  @include layout-bp(gt-md) {
+    font-size: 13px;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  padding: 20px;
+  border-radius: 0 0 4px 4px;
+}

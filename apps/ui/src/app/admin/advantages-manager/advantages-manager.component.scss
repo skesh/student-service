@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  margin-top: 40px;
+}
+
+::ng-deep tbody > tr:hover {
+  background-color: var(--color-white-dark);
+}

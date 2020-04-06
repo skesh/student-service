@@ -1,0 +1,24 @@
+<div class="logo" routerLink="/" fxHide.lt-lg></div>
+
+<div class="mobile-logo" routerLink="/" fxHide.gt-md></div>
+
+<div class="menu" fxLayout fxHide.lt-lg>
+  <a *ngFor="let item of menu" class="menu-item" [ngClass]="item.class" routerLinkActive="active"
+     [routerLinkActiveOptions]="item.options" [routerLink]="item.url">
+    <div class="menu-item-container">
+      <span>{{item.name}}</span>
+      <div class="line"></div>
+    </div>
+  </a>
+</div>
+
+<div class="right-menu">
+  <button mat-icon-button (click)="openMenu()" fxHide.gt-md>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="valutes" fxLayout="column" fxLayoutGap="2px" fxLayoutAlign="center end" fxHide.lt-lg>
+
+    <span class="phone">{{contacts.KHV.PHONE | phoneMask}}</span>
+    <span class="city">г. {{contacts.KHV.CITY}}</span>
+  </div>

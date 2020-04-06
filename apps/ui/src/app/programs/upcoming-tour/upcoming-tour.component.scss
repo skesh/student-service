@@ -1,0 +1,67 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  border-radius: 8px;
+  background-color: var(--color-white-dark);
+  color: var(--color-grey);
+
+  @include layout-bp(gt-md) {
+    padding: 20px;
+  }
+
+  @include layout-bp(lt-lg) {
+    padding: 15px;
+  }
+}
+
+.body {
+  @include layout-bp(gt-md) {
+    width: 295px;
+    padding-right: 25px;
+  }
+
+  @include layout-bp(lt-lg) {
+    width: 215px;
+    padding-right: 15px;
+  }
+}
+
+.tour-dates,
+.price span {
+  font-family: var(--rounded-black);
+
+  @include layout-bp(gt-md) {
+    font-size: 20px;
+  }
+
+  @include layout-bp(lt-lg) {
+    font-size: 15px;
+  }
+}
+
+.tour-seats {
+  font-family: var(--rounded-medium);
+
+  @include layout-bp(gt-md) {
+    font-size: 16px;
+  }
+
+  @include layout-bp(lt-lg) {
+    font-size: 12px;
+  }
+}
+
+.price {
+  display: flex;
+  border-left: 2px dotted var(--color-grey-light);
+  align-items: center;
+
+  @include layout-bp(gt-md) {
+    padding-left: 20px;
+  }
+
+  @include layout-bp(lt-lg) {
+    padding-left: 15px;
+  }
+}

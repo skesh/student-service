@@ -1,0 +1,4 @@
+<ng-container *ngIf="image$ | async as imageUrl">
+  <div class="image" [style.width]="width" [style.height]="height"
+       [style.background-image]="imageUrl | safe: 'style-url'"></div>
+</ng-container>

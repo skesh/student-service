@@ -1,0 +1,24 @@
+@import '~@angular/flex-layout/mq';
+
+span {
+  font-family: var(--rounded-medium);
+  color: var(--color-grey-light);
+  line-height: 29px;
+
+  @include layout-bp(gt-md) {
+    font-size: 18px;
+  }
+
+  @include layout-bp(lt-lg) {
+    font-size: 12px;
+  }
+}
+
+a {
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.expand {
+  color: var(--color-grey-light);
+}

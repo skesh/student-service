@@ -1,0 +1,50 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+%base-map {
+  display: flex;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-shrink: 0;
+
+  @include layout-bp(gt-md) {
+    width: 841px;
+    height: 391px;
+  }
+
+  @include layout-bp(lt-lg) {
+    width: 335px;
+    height: 160px;
+  }
+}
+
+.map-container {
+  margin-top: 60px;
+}
+
+.map {
+  @extend %base-map;
+
+  background-image: url('/assets/images/maps/General_map_World@2x.png');
+  z-index: 0;
+}
+
+.country-map {
+  @extend %base-map;
+
+  z-index: 1;
+}
+
+.map-buttons {
+  flex-wrap: wrap;
+
+  button {
+    margin-top: 4px;
+  }
+}

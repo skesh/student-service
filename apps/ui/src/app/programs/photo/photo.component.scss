@@ -1,0 +1,18 @@
+@import '~@angular/flex-layout/mq';
+
+.item {
+  display: block;
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+
+  @include layout-bp(gt-md) {
+    height: 276px;
+    width: 396px;
+  }
+
+  @include layout-bp(lt-lg) {
+    height: 233px;
+    width: 335px;
+  }
+}

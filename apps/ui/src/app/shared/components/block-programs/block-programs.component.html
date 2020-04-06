@@ -1,0 +1,24 @@
+<div fxLayoutAlign.gt-md="space-between" fxLayoutAlign.lt-lg="center" *ngIf="programs.length > 4">
+  <div class="space" fxHide.lt-lg></div>
+
+  <mat-slider *ngIf="isCompact" [(value)]="page" min="0" [max]="pages - 1" step="1"
+              thumbLabel="false" fxHide.lt-lg></mat-slider>
+
+  <div class="space">
+    <button class="rounded --orange" (click)="toggleShowAllHotPrograms()"
+            [class.active]="!isCompact">посмотреть все</button>
+  </div>
+</div>
+
+<div class="content" fxLayout fxLayoutAlign="center center">
+  <div class="tours">
+    <ng-container *ngIf="isCompact; else allPrograms">
+      <app-card-program *ngFor="let program of programsOnCurrentPage" [program]="program">
+      </app-card-program>
+    </ng-container>
+
+    <ng-template #allPrograms>
+      <app-card-program *ngFor="let program of programs" [program]="program"></app-card-program>
+    </ng-template>
+  </div>
+</div>

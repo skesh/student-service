@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutGap="4px" fxFlex="100%" fxLayoutAlign.lt-lg="center center">
+
+  <div class="offer shadow" *ngFor="let offer of offers; index as i"
+       [ngClass]="{active: offer === active}" (click)="setIndex(i)">
+
+    <div class="offer-header">
+      <span>{{offer.title}}</span>
+      <mat-icon class="arrow" fxHide.gt-md svgIcon="arrow1"></mat-icon>
+    </div>
+
+    <div class="offer-answer" *ngIf="offer === active" fxHide.gt-md>
+      <div class="offer-text" @fadeIn>{{offer.description}}</div>
+    </div>
+  </div>
+
+</div>
+
+<ng-container *ngIf="active as item">
+  <div class="offer-body shadow" fxHide.lt-lg>
+    <mat-icon svgIcon="quote" class="quote"></mat-icon>
+    <div class="offer-text">{{item.description}}</div>
+  </div>
+</ng-container>

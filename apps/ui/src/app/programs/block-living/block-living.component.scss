@@ -1,0 +1,91 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.block-living {
+  background-color: white;
+  border-radius: 4px;
+
+  @include layout-bp(gt-md) {
+    // height: 320px;
+    margin-top: 40px;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-top: 30px;
+  }
+}
+
+.text {
+  display: flex;
+
+  @include layout-bp(gt-md) {
+    // width: 400px;
+    padding: 40px;
+  }
+
+  @include layout-bp(lt-lg) {
+    padding: 30px;
+  }
+
+  @include layout-bp(lt-lg) {
+    //width: 276px;
+  }
+
+  span {
+    font: 16px var(--rounded-medium);
+    color: var(--color-grey);
+    line-height: 29px;
+  }
+}
+
+.image {
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+
+  @include layout-bp(gt-md) {
+    width: 800px;
+    height: 400px;
+  }
+
+  @include layout-bp(lt-lg) {
+    height: 300px;
+  }
+}
+
+.navigation {
+  display: flex;
+  margin: auto 40px;
+  justify-content: space-between;
+  width: 100%;
+
+  .prev,
+  .next {
+    width: 22px;
+    height: 42px;
+    fill: white;
+    cursor: pointer;
+  }
+
+  .prev {
+    transform: rotate(180deg);
+  }
+}
+
+.circle {
+  display: flex;
+  height: 8px;
+  width: 8px;
+  background-color: grey;
+  border-radius: 100%;
+  cursor: pointer;
+
+  &.active {
+    background-color: red;
+  }
+}

@@ -1,0 +1,9 @@
+<ng-container *ngIf="image$ | async as image">
+  <a class="article-card" [style.background-image]="image | safe:'style-url'"
+     [routerLink]="['/blog', article.id]">
+    <div class="details">
+      <div class="date">{{article?.created?.toDate() | date: 'dd MMMM'}}</div>
+      <div class="title">{{article.name}}</div>
+    </div>
+  </a>
+</ng-container>

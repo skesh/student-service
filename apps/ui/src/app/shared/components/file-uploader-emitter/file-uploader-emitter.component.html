@@ -1,0 +1,12 @@
+<input type="file" #fileUploader (change)="uploadFile($event)" [(ngModel)]="localFile" hidden />
+
+<div fxLayoutGap="10px" fxLayout fxLayoutAlign="start center">
+  <ng-container *ngIf="isLoading; else notLoading">
+    <mat-progress-spinner [color]="'primary'" [mode]="'indeterminate'" [diameter]="36">
+    </mat-progress-spinner>
+  </ng-container>
+
+  <ng-template #notLoading>
+    <button (click)="fileUploader.click()" mat-button>Добавить файл</button>
+  </ng-template>
+</div>

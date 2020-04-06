@@ -1,0 +1,24 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+  background-color: white;
+}
+
+.items {
+  display: grid;
+
+  @include layout-bp(gt-md) {
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 40px;
+    grid-gap: 42px;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-top: 30px;
+    grid-template-columns: repeat(2, 160px);
+    grid-gap: 10px;
+  }
+}

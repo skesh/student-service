@@ -1,0 +1,78 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  flex-shrink: 0;
+}
+
+.schedule-list {
+  border-radius: 4px;
+  background-color: white;
+
+  @include layout-bp(gt-md) {
+    margin-top: 40px;
+    padding: 40px;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-top: 30px;
+    padding: 30px;
+  }
+}
+
+.line {
+  border-right: 1px dashed var(--color-grey-light);
+  z-index: 5;
+
+  @include layout-bp(gt-md) {
+    margin-right: -140px;
+    margin-left: 140px;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-right: -85px;
+    margin-left: 85px;
+  }
+}
+
+.schedule-grid {
+  display: grid;
+  grid-row-gap: 25px;
+
+  @include layout-bp(gt-md) {
+    grid-template-columns: 120px 560px;
+    grid-column-gap: 40px;
+  }
+
+  @include layout-bp(lt-lg) {
+    grid-template-columns: 70px 150px;
+    grid-column-gap: 30px;
+  }
+}
+
+.time {
+  text-align: right;
+  font-family: var(--rounded-medium);
+  color: var(--color-grey);
+
+  @include layout-bp(gt-md) {
+    font-size: 18px;
+  }
+
+  @include layout-bp(lt-lg) {
+    font-size: 13.5px;
+  }
+}
+
+.name {
+  overflow-wrap: break-word;
+  color: var(--color-grey-light);
+  font-family: var(--rounded-medium);
+
+  @include layout-bp(gt-md) {
+    font-size: 18px;
+  }
+
+  @include layout-bp(lt-lg) {
+    font-size: 13.5px;
+  }
+}

@@ -1,0 +1,30 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.advantages {
+  display: grid;
+
+  @include layout-bp(gt-md) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+  }
+
+  @include layout-bp(lt-lg) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 8px;
+  }
+}
+
+.banners {
+  @include layout-bp(gt-md) {
+    margin-left: 40px;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-top: 40px;
+  }
+}

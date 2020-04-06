@@ -1,0 +1,117 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+
+  @include layout-bp(gt-md) {
+    padding-left: 100px;
+    padding-bottom: 80px;
+    border-left: 4px solid #ebebeb;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-bottom: 25px;
+  }
+
+  .title {
+    line-height: 32px;
+    color: var(--color-grey);
+
+    @include layout-bp(gt-md) {
+      margin-top: 40px;
+      font-size: 32px;
+    }
+
+    @include layout-bp(lt-lg) {
+      margin-top: 25px;
+      font-size: 24px;
+    }
+  }
+
+  ::ng-deep app-quote {
+    font-family: var(--rounded-medium);
+    color: var(--color-grey-light);
+
+    @include layout-bp(gt-md) {
+      margin-top: 40px;
+      line-height: 29px;
+      font-size: 16px;
+    }
+
+    @include layout-bp(lt-lg) {
+      margin-top: 25px;
+      font-size: 12px;
+      line-height: 22px;
+    }
+  }
+}
+
+.plan-block {
+  display: flex;
+
+  &:last-child .details {
+    border-left: unset;
+  }
+
+  @include layout-bp(lt-lg) {
+    flex-direction: column;
+  }
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  border-radius: 100%;
+  background-color: #ebebeb;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 5;
+
+  @include layout-bp(gt-md) {
+    height: 120px;
+    width: 120px;
+    margin-right: -58px;
+  }
+
+  @include layout-bp(lt-lg) {
+    height: 90px;
+    width: 90px;
+  }
+
+  .time {
+    font-family: var(--rounded-light);
+    color: var(--color-orange);
+
+    @include layout-bp(gt-md) {
+      font-size: 35px;
+      line-height: 35px;
+    }
+
+    @include layout-bp(lt-lg) {
+      font-size: 26.5px;
+      line-height: 26.5px;
+    }
+  }
+
+  .time-unit {
+    font-family: var(--rounded-thin);
+    color: var(--color-grey-light);
+
+    @include layout-bp(gt-md) {
+      line-height: 18px;
+      font-size: 18px;
+    }
+
+    @include layout-bp(lt-lg) {
+      font-size: 13.5px;
+      line-height: 13.5px;
+    }
+  }
+}

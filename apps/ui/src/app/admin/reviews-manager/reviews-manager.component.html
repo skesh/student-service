@@ -1,0 +1,27 @@
+<ng-container *ngIf="newReviewFields.length">
+  <app-dynamic-form [fields]="newReviewFields" (save)="afs.addItem('reviews', $event)">
+  </app-dynamic-form>
+</ng-container>
+
+<mat-divider></mat-divider>
+
+<ng-container *ngIf="reviews$ | async as reviews">
+  <mat-list>
+    <mat-list-item *ngFor="let review of reviews">
+      <button mat-icon-button (click)="delete(review)">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      <div fxLayout fxLayoutGap="8px">
+        <ng-container *ngIf="(programs$ | async) as programs">
+          <ng-container *ngIf="programs.length">
+            <b>[{{getById(review.programId, programs)?.title}}]</b>
+          </ng-container>
+        </ng-container>
+
+        <span>{{review?.firstname}}</span>
+        <span>{{review?.lastname}}</span>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</ng-container>

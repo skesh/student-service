@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Недавно смотрели</h2>
+
+  <div class="items">
+    <ng-container *ngIf="programs.length">
+      <app-card-program *ngFor="let program of programs" [program]="program" [small]="true">
+      </app-card-program>
+    </ng-container>
+  </div>
+</div>

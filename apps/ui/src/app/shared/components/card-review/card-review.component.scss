@@ -1,0 +1,103 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+
+  @include layout-bp(lt-lg) {
+    flex-direction: column;
+    width: 255px;
+    padding: 30px 20px;
+    background-color: white;
+    min-height: 275px;
+    box-shadow: 2px 12px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  background-color: white;
+
+  @include layout-bp(gt-md) {
+    flex-direction: column;
+    height: 160px;
+    width: 160px;
+    padding: 20px;
+    z-index: 10;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  .photo {
+    display: flex;
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+    flex-shrink: 0;
+
+    @include layout-bp(gt-md) {
+      height: 80px;
+      width: 80px;
+    }
+
+    @include layout-bp(lt-lg) {
+      margin-right: 20px;
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .name {
+    font: 16px var(--rounded-light);
+    color: var(--color-grey-light);
+
+    @include layout-bp(gt-md) {
+      margin-top: 20px;
+    }
+  }
+}
+
+.w160 {
+  width: 160px;
+}
+
+.quote {
+  width: 28px;
+  height: 20px;
+  fill: var(--color-white-grey);
+  transform: rotate(180deg);
+}
+
+.description {
+  display: flex;
+
+  @include layout-bp(gt-md) {
+    width: 420px;
+    padding: 40px 40px 40px 200px;
+    z-index: 5;
+    border-radius: 4px;
+    margin-top: 40px;
+    margin-left: -160px;
+    flex-direction: column;
+    min-height: 180px;
+    background-color: white;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-top: 20px;
+  }
+
+  ::ng-deep app-quote span {
+    font-family: var(--rounded);
+    color: var(--color-blue-deep);
+    line-height: 28px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  .quote {
+    margin-top: 20px;
+    transform: unset;
+  }
+}

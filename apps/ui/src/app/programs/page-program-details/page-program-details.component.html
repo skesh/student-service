@@ -1,0 +1,95 @@
+<ng-container *ngIf="program$ | async as program">
+  <div class="container" fxLayout fxLayoutAlign="end" fxHide.lt-lg>
+    <app-feedback @fade></app-feedback>
+  </div>
+
+  <div class="image"
+       [style.background-image]="(program.bigImage ? (bigImage$ | async) : '/assets/images/default-program-bg.jpg') | safe: 'style-url'">
+
+    <div class="program-header --title">
+      <div class="--text">
+        <h1>{{program.title}}</h1>
+      </div>
+    </div>
+
+    <div class="container" fxLayout="column">
+      <div class="tabs --orange">
+        <div class="tab" *ngFor="let tab of tabs.options" [class.active]="tabs.active === tab"
+             (click)="tabs.active = tab">{{tab}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="program-details grid40" [ngSwitch]="tabs.active">
+      <ng-container *ngSwitchCase="'О программе'">
+        <ng-container *ngIf="tours$ | async as tours">
+          <div class="upcoming" fxLayout="column" fxLayoutGap.gt-md="30px" fxLayoutGap.lt-lg="22px"
+               *ngIf="tours.length">
+            <ng-container *ngIf="tours.length">
+              <h2>Ближайшие смены:</h2>
+
+              <div fxLayout="column" fxLayoutGap="4px">
+                <app-upcoming-tour [tour]="tour" *ngFor="let tour of tours"></app-upcoming-tour>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+
+        <app-block-program-info [program]="program"></app-block-program-info>
+
+        <!-- <app-block-auditorium></app-block-auditorium> -->
+
+        <app-block-schedule [events]="program.events" *ngIf="program?.events?.length">
+        </app-block-schedule>
+
+        <app-block-living *ngIf="program?.residence?.length" [residences]="program.residence">
+        </app-block-living>
+
+        <app-block-included [includes]="program?.includes" *ngIf="program?.includes?.length">
+        </app-block-included>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'Отзывы'">
+        <ng-container *ngIf="reviews$ | async as reviews">
+          <ng-container *ngIf="reviews.length; else noReviews">
+            <app-card-review [review]="review" *ngFor="let review of reviews"></app-card-review>
+          </ng-container>
+
+          <ng-template #noReviews>
+            <div fxLayout fxLayoutAlign="center center" class="msg">Отзывы не найдены</div>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'Фотоотчеты'">
+        <ng-container *ngIf="photos$ | async as photos">
+          <ngx-image-gallery [images]="photos" [conf]="conf"></ngx-image-gallery>
+
+          <div class="photo-grid">
+            <div class="photo-item" *ngFor="let photo of photos; index as i"
+                 [style.background-image]="photo.url | safe: 'style-url'" (click)="openGallery(i)">
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'Экскурсии'">
+        <ng-container *ngIf="program?.excursions?.length">
+          <app-block-plan [excursions]="program.excursions"></app-block-plan>
+        </ng-container>
+      </ng-container>
+
+      <div class="grid40" *ngIf="program?.questions?.length">
+        <h2>Часто задаваемые вопросы</h2>
+
+        <app-questions [questions]="program?.questions"></app-questions>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="viewedPrograms$ | async as viewedPrograms">
+    <app-viewed-programs [programs]="viewedPrograms" *ngIf="viewedPrograms?.length">
+    </app-viewed-programs>
+  </ng-container>
+</ng-container>

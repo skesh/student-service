@@ -1,0 +1,33 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+
+  @include layout-bp(gt-md) {
+    height: 180px;
+    width: 180px;
+  }
+
+  @include layout-bp(lt-lg) {
+    height: 135px;
+    width: 135px;
+  }
+}
+
+.profession-name {
+  color: var(--color-grey);
+
+  @include layout-bp(gt-md) {
+    margin-top: 20px;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+}

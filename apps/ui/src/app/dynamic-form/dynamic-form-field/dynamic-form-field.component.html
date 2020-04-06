@@ -1,0 +1,52 @@
+<div [formGroup]="form" fxLayout="column">
+  <ng-container [ngSwitch]="field.controlType">
+
+    <mat-form-field *ngSwitchCase="'textbox'">
+      <input [formControlName]="field.key" [id]="field.key" [type]="field.type" autocomplete="off"
+             matInput [placeholder]="field.label">
+      <mat-hint *ngIf="field.hint">{{field.hint}}</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field *ngSwitchCase="'numberfield'">
+      <input [formControlName]="field.key" [id]="field.key" type="number" autocomplete="off"
+             matInput [placeholder]="field.label">
+    </mat-form-field>
+
+    <mat-form-field *ngSwitchCase="'timefield'">
+      <input [owlDateTime]="eventTimeOwl" [owlDateTimeTrigger]="eventTimeOwl" matInput
+             [placeholder]="field.label" [formControlName]="field.key" autocomplete="off">
+
+      <owl-date-time #eventTimeOwl [pickerType]="'timer'"></owl-date-time>
+    </mat-form-field>
+
+    <mat-form-field *ngSwitchCase="'datefield'">
+      <input [owlDateTime]="eventDateOwl" [owlDateTimeTrigger]="eventDateOwl" matInput
+             [placeholder]="field.label" [formControlName]="field.key" autocomplete="off">
+
+      <owl-date-time #eventDateOwl [pickerType]="'calendar'"></owl-date-time>
+    </mat-form-field>
+
+    <app-file-uploader [formControlName]="field.key" *ngSwitchCase="'filefield'"
+                       [directory]="field.directory" [placeholder]="field.label"
+                       [hint]="field?.hint">
+    </app-file-uploader>
+
+    <mat-form-field *ngSwitchCase="'selectfield'">
+      <mat-label>{{field.label}}</mat-label>
+      <mat-select [formControlName]="field.key">
+        <mat-option *ngFor="let option of field.options" [value]="option[field.optionValue]">
+          {{option[field.optionLabel]}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngSwitchCase="'htmleditorfield'">
+      <ckeditor [editor]="editor" [formControlName]="field.key"></ckeditor>
+    </ng-container>
+
+    <mat-slide-toggle *ngSwitchCase="'booleanfield'" [formControlName]="field.key">
+      {{field.label}}
+    </mat-slide-toggle>
+
+  </ng-container>
+</div>

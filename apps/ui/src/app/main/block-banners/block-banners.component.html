@@ -1,0 +1,7 @@
+<div fxLayout fxLayoutAlign="center center" fxLayoutGap="16px">
+  <div *ngFor="let banner of banners" [class.--active]="bannerActive === banner" class="circle"
+       (click)="set(banner)">
+  </div>
+</div>
+
+<div class="banner" [style.background-image]="bannerActive | safe: 'style-url'"></div>

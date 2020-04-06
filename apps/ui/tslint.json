@@ -1,10 +1,23 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "studentService", "camelCase"],
-    "component-selector": [true, "element", "student-service", "kebab-case"]
+    "directive-selector": [
+      true,
+      "attribute",
+      "studentService",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "student-service",
+      "kebab-case",
+      "app"
+    ]
   },
   "linterOptions": {
-    "exclude": ["!**/*"]
+    "exclude": [
+      "!**/*"
+    ]
   }
 }

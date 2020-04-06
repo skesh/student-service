@@ -1,0 +1,81 @@
+@import '~@angular/flex-layout/mq';
+
+.airlines {
+  height: 300px;
+
+  .container {
+    display: flex;
+    justify-content: center;
+
+    @include layout-bp(gt-md) {
+      padding-top: 70px;
+    }
+  }
+}
+
+.articles-filter {
+  @include layout-bp(lt-lg) {
+    padding: 30px 20px 50px;
+    align-items: center;
+    text-align: center;
+    height: unset;
+  }
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include layout-bp(gt-md) {
+    margin-top: -90px;
+  }
+
+  @include layout-bp(lt-lg) {
+    margin-top: -20px;
+  }
+
+  .prev,
+  .next {
+    height: 20px;
+    width: 22px;
+    fill: var(--color-orange);
+  }
+
+  .prev {
+    transform: rotate(180deg);
+  }
+
+  .image {
+    display: flex;
+    border-radius: 4px;
+    background-position: center;
+    background-size: cover;
+
+    @include layout-bp(gt-sm) {
+      height: 600px;
+      width: 850px;
+    }
+
+    @include layout-bp(lt-md) {
+      width: 320px;
+      height: 240px;
+    }
+  }
+}
+
+.article-content {
+  display: flex;
+  flex-direction: column;
+  font: 18px var(--rounded-medium);
+  color: var(--color-grey);
+
+  @include layout-bp(gt-md) {
+    width: 850px;
+    margin: 60px 0 140px;
+  }
+
+  @include layout-bp(lt-lg) {
+    padding: 10px 20px 30px;
+  }
+}

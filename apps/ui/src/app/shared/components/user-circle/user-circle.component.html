@@ -1,0 +1,12 @@
+<ng-container *ngIf="image; else withoutPhoto">
+  <ng-container *ngIf="image$ | async as image">
+    <div class="user" [style.background-image]="image | safe: 'style-url'"> </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #withoutPhoto>
+  <div class="user" fxLayout fxLayoutGap="2px" fxLayoutAlign="center center">
+    <span>{{firstname ? firstname[0] : 'A'}}</span>
+    <span>{{lastname ? lastname[0] : 'U'}}</span>
+  </div>
+</ng-template>

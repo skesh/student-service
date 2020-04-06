@@ -1,0 +1,45 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+}
+
+.option {
+  text-transform: uppercase;
+  font-family: var(--rounded-medium);
+  color: var(--color-grey-light);
+  background-color: white;
+  border-bottom: 1px solid var(--color-grey-light);
+  border-radius: unset;
+
+  @include layout-bp(gt-md) {
+    font-size: 14px;
+  }
+
+  @include layout-bp(lt-lg) {
+    font-size: 11px;
+  }
+
+  &:hover {
+    color: var(--color-grey);
+    background-color: unset;
+  }
+
+  &.selected {
+    color: var(--color-orange);
+  }
+
+  &:last-child {
+    border-bottom: unset;
+  }
+}
+
+::ng-deep .mat-menu-panel {
+  border-radius: 8px !important;
+  margin-top: 10px;
+}
+
+::ng-deep .mat-menu-content {
+  padding: 10px 15px !important;
+  border-radius: 8px;
+}

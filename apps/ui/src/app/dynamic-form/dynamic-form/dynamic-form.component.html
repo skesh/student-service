@@ -1,0 +1,9 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <div *ngFor="let field of fields">
+    <app-dynamic-form-field [field]="field" [form]="form"></app-dynamic-form-field>
+  </div>
+
+  <div fxLayout fxLayoutAlign="end">
+    <button type="submit" [disabled]="form.invalid" mat-stroked-button>Сохранить</button>
+  </div>
+</form>

@@ -1,0 +1,126 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 118px;
+  border-radius: 0 0 8px 8px;
+  margin-bottom: -20px;
+  z-index: 10;
+  background-color: white;
+
+  &::after {
+    display: block;
+    content: '';
+    background-image: url('/assets/svg/Logo_1.svg');
+    background-repeat: no-repeat;
+    height: 80px;
+    width: 98px;
+  }
+}
+
+.mobile-logo {
+  display: block;
+  height: 34.23px;
+  width: 95.91px;
+  background-image: url('/assets/svg/Logo_Mobile.svg');
+  margin: auto 0 auto 20px;
+}
+
+.valutes {
+  color: var(--color-black);
+}
+
+.menu-item {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  text-decoration: unset;
+
+  &::before,
+  &:last-child::after {
+    display: flex;
+    flex-shrink: 0;
+    content: '';
+    width: 1px;
+    height: 40px;
+    background:
+      linear-gradient(
+        rgba(133, 133, 133, 0),
+        rgba(133, 133, 133, 1),
+        rgba(133, 133, 133, 0)
+      );
+    margin-top: 20px;
+  }
+
+  .menu-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  span {
+    display: flex;
+    margin-bottom: 22px;
+    padding: 0 17px;
+    color: var(--color-grey);
+    font-size: 18px;
+    font-family: var(--rounded-medium);
+  }
+
+  .line {
+    height: 4px;
+  }
+
+  &.--orange.active .line {
+    background-color: var(--color-orange) !important;
+  }
+
+  &.--orange:hover .line {
+    background-color: rgba(243, 132, 34, 0.5);
+  }
+
+  &.--green.active .line {
+    background-color: var(--color-green) !important;
+  }
+
+  &.--green:hover .line {
+    background-color: rgba(80, 166, 40, 0.5);
+  }
+
+  &.--blue.active .line {
+    background-color: var(--color-blue) !important;
+  }
+
+  &.--blue:hover .line {
+    background-color: rgba(52, 113, 235, 0.5);
+  }
+}
+
+.currency {
+  color: var(--color-orange);
+  font-family: var(--rounded-medium);
+}
+
+.right-menu {
+  margin: auto 20px auto 0;
+}
+
+.phone {
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-grey);
+}
+
+.city {
+  color: var(--color-grey-light);
+}

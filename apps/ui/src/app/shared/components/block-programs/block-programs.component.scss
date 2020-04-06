@@ -1,0 +1,65 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+
+  @include layout-bp(gt-md) {
+    flex-direction: column;
+  }
+
+  @include layout-bp(lt-lg) {
+    flex-direction: column-reverse;
+  }
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: 210px 400px 210px;
+  grid-gap: 100%;
+}
+
+.space {
+  @include layout-bp(gt-md) {
+    width: 210px;
+  }
+}
+
+mat-slider {
+  width: 400px;
+}
+
+.content {
+  @include layout-bp(gt-md) {
+    margin-top: 40px;
+  }
+}
+
+.tours {
+  display: grid;
+
+  @include layout-bp(gt-md) {
+    grid-template-columns: repeat(4, 290px);
+    grid-gap: 40px;
+  }
+
+  @include layout-bp(lt-lg) {
+    grid-template-columns: repeat(1, 335px);
+    grid-gap: 8px;
+  }
+}
+
+::ng-deep mat-slider .mat-slider-thumb {
+  display: flex;
+  height: 60px;
+  width: 60px;
+  background-image: url('/assets/svg/Control_Slider.svg');
+  background-repeat: no-repeat;
+  margin-bottom: -21px;
+  background-color: white !important;
+}
+
+button {
+  @include layout-bp(lt-lg) {
+    margin-top: 40px;
+  }
+}

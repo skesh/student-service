@@ -1,0 +1,20 @@
+<div fxLayout
+     fxLayoutGap="40px"
+     fxLayoutAlign.lt-lg="center">
+
+  <div class="advantages">
+    <app-card-advantage [advantage]="advantage"
+                        *ngFor="let advantage of advantages"></app-card-advantage>
+  </div>
+</div>
+
+<div class="banners"
+     fxLayout="column"
+     fxHide.lt-lg
+     fxLayoutGap="40px">
+  <a *ngFor="let banner of banners"
+     target="_blank"
+     [href]="banner.url">
+    <img [src]="banner.image">
+  </a>
+</div>

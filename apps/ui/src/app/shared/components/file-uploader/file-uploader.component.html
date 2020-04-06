@@ -1,0 +1,18 @@
+<ng-container *ngIf="value; else valueEmpty">
+  <app-file-viewer [url]="value" (remove)="clear()"></app-file-viewer>
+</ng-container>
+
+<ng-template #valueEmpty>
+  <ng-container *ngIf="isLoading; else notLoading">
+    <mat-progress-spinner [color]="'primary'" [mode]="'indeterminate'" [diameter]="36">
+    </mat-progress-spinner>
+  </ng-container>
+
+  <ng-template #notLoading>
+    <mat-form-field>
+      <ngx-mat-file-input [(ngModel)]="selectedFile" [placeholder]="placeholder"
+                          (change)="uploadFile($event, directory)"></ngx-mat-file-input>
+      <mat-hint *ngIf="hint">{{hint}}</mat-hint>
+    </mat-form-field>
+  </ng-template>
+</ng-template>

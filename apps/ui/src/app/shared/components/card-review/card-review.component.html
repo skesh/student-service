@@ -1,0 +1,23 @@
+<div class="user" ngClass.gt-md="shadow">
+  <div fxLayout fxLayoutAlign="end" class="w160" fxHide.lt-lg>
+    <mat-icon class="quote" svgIcon="quote"></mat-icon>
+  </div>
+
+  <ng-container *ngIf="photo$ | async as photo; else noPhoto">
+    <div class="photo" [style.background-image]="photo | safe: 'style-url'"> </div>
+  </ng-container>
+
+  <ng-template #noPhoto>
+    <div class="photo"></div>
+  </ng-template>
+
+  <span class="name">{{review?.firstname}} {{review?.lastname}}</span>
+</div>
+
+<div class="description" ngClass.gt-md="shadow" *ngIf="review?.text">
+  <app-quote [text]="review.text" [maxLength]="120"></app-quote>
+
+  <div fxLayout fxLayoutAlign="end" fxHide.lt-lg>
+    <mat-icon class="quote" svgIcon="quote"></mat-icon>
+  </div>
+</div>

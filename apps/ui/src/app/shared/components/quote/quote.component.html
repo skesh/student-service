@@ -1,0 +1,10 @@
+<ng-container *ngIf="compact; else fullText">
+  <span>
+    {{text | slice: 0:maxLength}}...
+    <a (click)="toggle()" class="expand">развернуть</a>
+  </span>
+</ng-container>
+
+<ng-template #fullText>
+  <span [innerText]="text"></span>
+</ng-template>

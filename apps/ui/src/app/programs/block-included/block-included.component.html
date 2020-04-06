@@ -1,0 +1,11 @@
+<h2>Что включено в стоимость:</h2>
+
+<div class="included shadow" fxLayout="column" fxLayoutGap="20px">
+  <div class="item" *ngFor="let item of includes" fxLayout fxLayoutGap.gt-md="20px"
+       fxLayoutGap="15px" fxLayoutAlign="start center">
+    <div class="icon">
+      <mat-icon class="check" svgIcon="check"></mat-icon>
+    </div>
+    <span>{{item.name}}</span>
+  </div>
+</div>

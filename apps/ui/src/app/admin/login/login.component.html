@@ -1,0 +1,15 @@
+<form [formGroup]="form" fxLayout>
+  <mat-card fxLayout="column">
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Пароль" formControlName="password" type="password"
+             autocomplete="off">
+    </mat-form-field>
+
+    <button mat-button (click)="auth.login(form.get('email').value, form.get('password').value)"
+            [disabled]="form.invalid">Вход</button>
+  </mat-card>
+</form>

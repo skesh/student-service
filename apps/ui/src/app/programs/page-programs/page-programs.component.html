@@ -1,0 +1,44 @@
+<div class="programs-filter airlines">
+  <div class="container grid40">
+    <h1>Программы</h1>
+
+    <div fxLayout.gt-md="row" fxLayoutAlign.gt-md="space-between"
+         fxLayoutAlign.lt-lg="center center" fxLayout.lt-lg="column" fxLayoutGap.lt-lg="10px">
+      <div fxLayout fxLayoutGap.gt-md="20px" fxLayoutGap.lt-lg="15px">
+        <button class="rounded btn" *ngFor="let type of types" (click)="setFilter(type)"
+                [ngClass]="{'--blue': type === 'internship', '--green': type === 'vacations', 'active': type === state.type}">{{typesEnum[type]}}</button>
+      </div>
+
+      <div fxLayout fxLayoutGap.gt-md="20px" fxLayoutGap.lt-lg="15px" class="filters">
+        <ng-container *ngIf="countries$ | async as countries">
+          <app-select [(ngModel)]="state.country" [options]="countries" *ngIf="countries.length">
+          </app-select>
+        </ng-container>
+
+        <ng-container *ngIf="ages$ | async as ages">
+          <app-select [(ngModel)]="state.age" [options]="ages" *ngIf="ages.length"></app-select>
+        </ng-container>
+
+        <ng-container *ngIf="months$ | async as months">
+          <app-select [(ngModel)]="state.month" [options]="months" *ngIf="months.length">
+          </app-select>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-container *ngIf="filter(programs$ | async, tours$ | async) as programs">
+  <div class="content">
+    <ng-container *ngIf="loading$ | async; else loaded">
+      <div fxLayout fxLayoutAlign="center">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-container>
+
+    <ng-template #loaded>
+      <app-programs-grid [programs]="programs"></app-programs-grid>
+    </ng-template>
+  </div>
+</ng-container>

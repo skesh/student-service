@@ -1,0 +1,25 @@
+<div class="controls" fxLayout fxLayoutAlign="end center" fxLayoutGap="40px">
+  <div fxLayout fxLayoutAlign="start end" fxLayoutGap="10px">
+    <span class="currentItem">0{{index + 1}}</span>
+    <span class="totalItems">/ 0{{count}}</span>
+  </div>
+
+  <div class="buttons" fxLayout fxLayoutAlign="start end" fxLayoutGap="10px">
+    <mat-icon class="prev" (click)="prev()" [class.disable]="isFirst" svgIcon="small-arrow2">
+    </mat-icon>
+    <mat-icon class="next" (click)="next()" [class.disable]="isLast" svgIcon="big-arrow2">
+    </mat-icon>
+  </div>
+</div>
+
+<div class="block-content">
+  <ng-container *ngIf="selectedReview?.photo">
+    <app-card-review [review]="selectedReview"></app-card-review>
+  </ng-container>
+
+  <ng-container *ngIf="selectedReview?.programId">
+    <ng-container *ngIf="program$ | async as program">
+      <app-card-program [inline]="true" [program]="program" fxHide.lt-lg></app-card-program>
+    </ng-container>
+  </ng-container>
+</div>

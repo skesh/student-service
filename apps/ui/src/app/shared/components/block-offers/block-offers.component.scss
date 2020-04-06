@@ -1,0 +1,92 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-grey-light);
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+
+  @include layout-bp(gt-md) {
+    margin-right: 40px;
+    padding-left: 20px;
+  }
+
+  @include layout-bp(lt-lg) {
+    width: 900px;
+    padding: 0 16px 0 20px;
+  }
+
+  @include layout-bp(lt-md) {
+    width: 520px;
+    padding: 0 16px 0 20px;
+  }
+
+  @include layout-bp(lt-sm) {
+    width: 300px;
+    padding: 0 16px 0 20px;
+  }
+
+  .offer-header {
+    display: flex;
+    align-items: center;
+    height: 52px;
+  }
+
+  .offer-answer {
+    padding-bottom: 10px;
+  }
+
+  &.active {
+    margin-right: 0;
+    cursor: unset;
+
+    @include layout-bp(gt-md) {
+      border-right: 4px solid var(--color-orange);
+    }
+
+    & > .offer-header {
+      color: var(--color-orange);
+    }
+
+    .arrow {
+      transform: rotate(270deg);
+    }
+  }
+}
+
+.offer-body {
+  display: flex;
+  border-radius: 4px;
+  width: 400px;
+  padding: 20px 45px 60px 20px;
+  background-color: white;
+  border-right: 4px solid var(--color-orange);
+  margin-left: 40px;
+
+  .quote {
+    fill: var(--color-white-grey);
+    height: 20px;
+    width: 28px;
+    flex-shrink: 0;
+  }
+
+  .offer-text {
+    color: var(--color-black);
+    line-height: 28px;
+    padding: 20px 0 0 40px;
+  }
+}
+
+.arrow {
+  height: 21px;
+  width: 11px;
+  fill: var(--color-orange);
+  margin-left: auto;
+  transform: rotate(90deg);
+}

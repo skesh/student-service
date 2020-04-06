@@ -1,0 +1,118 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  border-radius: 8px;
+  background-color: white;
+  flex-direction: column;
+
+  @include layout-bp(gt-md) {
+    width: 400px;
+  }
+
+  @include layout-bp(lt-lg) {
+    width: 320px;
+  }
+}
+
+.phrase {
+  @include layout-bp(lt-lg) {
+    font-size: 10.5px;
+  }
+}
+
+%icon {
+  display: block;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.icon-mail {
+  @extend %icon;
+
+  background-image: url('/assets/svg/feedback/Control_Mail_Default.svg');
+
+  &:hover,
+  &.active {
+    background-image: url('/assets/svg/feedback/Control_Mail_Active.svg');
+  }
+}
+
+.icon-telegram {
+  @extend %icon;
+
+  background-image: url('/assets/svg/feedback/Control_Telegram_Default.svg');
+
+  &:hover,
+  &.active {
+    background-image: url('/assets/svg/feedback/Control_Telegram_Active.svg');
+  }
+}
+
+.icon-whatsapp {
+  @extend %icon;
+
+  background-image: url('/assets/svg/feedback/Control_Whatsapp_Default.svg');
+
+  &:hover,
+  &.active {
+    background-image: url('/assets/svg/feedback/Control_Whatsapp_Active.svg');
+  }
+}
+
+.icon-skype {
+  @extend %icon;
+
+  background-image: url('/assets/svg/feedback/Control_Skype_Default.svg');
+
+  &:hover,
+  &.active {
+    background-image: url('/assets/svg/feedback/Control_Skype_Active.svg');
+  }
+}
+
+span {
+  font: 14px var(--rounded-medium);
+  color: var(--color-grey-light);
+}
+
+.content {
+  @include layout-bp(lt-lg) {
+    padding: 20px;
+    width: 320px;
+  }
+
+  @include layout-bp(gt-md) {
+    padding: 40px;
+    width: 400px;
+  }
+}
+
+.send {
+  display: flex;
+  padding: 20px 40px;
+  font: 18px var(--rounded-extra-bold);
+  color: #ebebeb;
+  background-color: var(--color-red);
+  border-radius: 0 0 8px 8px;
+  border: 0;
+  margin: auto 0 0;
+}
+
+input {
+  display: flex;
+  height: 50px;
+  background-color: #ebebeb;
+  color: var(--color-grey-light);
+  font: 16px var(--rounded-medium);
+  align-items: center;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 8px;
+
+  &::placeholder {
+    color: var(--color-grey-light);
+    font: 16px var(--rounded-medium);
+  }
+}

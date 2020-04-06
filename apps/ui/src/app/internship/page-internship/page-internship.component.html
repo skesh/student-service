@@ -1,0 +1,60 @@
+<div class="airlines info-page-header --blue">
+  <div class="container">
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <span class="header-title">Стажировка за границей</span>
+
+      <span class="header-text">Отправляйтесь по программам работы за границей из Хабаровска вместе
+        с<br>компанией Student’s Service — станьте профессионалом международного уровня!</span>
+
+      <div class="map"></div>
+    </div>
+
+    <div class="tabs --blue">
+      <div *ngFor="let tab of tabs.options" [class.active]="tab == tabs.active" class="tab"
+           (click)="tabs.active = tab">{{tab}}</div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="tabs.active === 'Стажировка'">
+  <app-block [color]="'white'">
+    <div fxLayout>
+      <mat-icon svgIcon="quote" class="quote">quote</mat-icon>
+      <app-quote [text]='text'></app-quote>
+    </div>
+  </app-block>
+
+  <ng-container *ngIf="profession$ | async as profession">
+    <app-block [color]="'grey'" [title]="'Есть работа в областях'" *ngIf="profession.length > 0">
+      <div class="profession-grid">
+        <app-profession-card *ngFor="let p of profession" [profession]="p"></app-profession-card>
+      </div>
+    </app-block>
+  </ng-container>
+
+  <ng-container *ngIf="reviews$ | async as reviews">
+    <app-block [title]="'Отзывы участников'" [color]="'grey'" *ngIf="reviews.length">
+      <app-block-reviews [reviews]="reviews"></app-block-reviews>
+    </app-block>
+  </ng-container>
+
+  <ng-container *ngIf="upcommingPrograms$ | async as programs">
+    <app-block [color]="'white'" [title]="'Ближайшие смены'" *ngIf="programs.length">
+      <app-block-programs [programs]="programs"></app-block-programs>
+    </app-block>
+  </ng-container>
+
+  <ng-container *ngIf="questions$ | async as questions">
+    <ng-container *ngIf="questions.length">
+      <app-block [color]="'grey'" [title]="'Часто задаваемые вопросы'">
+        <app-questions [questions]="questions"></app-questions>
+      </app-block>
+    </ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="tabs.active === 'Программы'">
+  <app-block *ngIf="programs$ | async as programs">
+    <app-programs-grid [programs]="programs"></app-programs-grid>
+  </app-block>
+</ng-container>

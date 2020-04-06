@@ -1,0 +1,11 @@
+<ng-container *ngIf="programs">
+  <div class="container programs-grid" *ngIf="programs.length; else noPrograms">
+    <app-card-program [program]="program" *ngFor="let program of programs"> </app-card-program>
+  </div>
+
+  <ng-template #noPrograms>
+    <div fxLayout fxLayoutAlign="center center" fxFlex="100%" class="container no-programs">
+      <span>Программы не найдены</span>
+    </div>
+  </ng-template>
+</ng-container>

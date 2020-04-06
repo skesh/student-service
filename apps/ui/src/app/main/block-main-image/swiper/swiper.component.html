@@ -1,0 +1,16 @@
+<div class="swiper" fxHide.gt-md fxLayoutGap="10px">
+  <a [routerLink]="slide.url" class="slide" *ngFor="let slide of slides"
+     [style.background-image]="slide.image | safe: 'style-url'" (swipeleft)="next()"
+     (swiperight)="prev()">
+    <div class="slide-footer" [ngClass]="slide.class">
+      <span class="slide-name">{{slide.name}}</span>
+      <span *ngIf="slide.second" class="slide-second">{{slide.second}}</span>
+    </div>
+  </a>
+</div>
+
+<div fxLayout fxLayoutGap="12px" fxLayoutAlign="center center" class="circles">
+  <div class="circle" *ngFor="let item of menu; index as i" [class.active]="item === menu[index]"
+       (click)="setIndex(i)">
+  </div>
+</div>

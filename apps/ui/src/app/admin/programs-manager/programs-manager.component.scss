@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  margin-top: 40px;
+  width: 100%;
+}
+
+mat-slide-toggle,
+.action-button {
+  margin-top: 20px;
+}

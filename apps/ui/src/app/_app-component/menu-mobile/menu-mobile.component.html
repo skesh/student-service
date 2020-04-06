@@ -1,0 +1,8 @@
+<div fxLayout fxLayoutAlign="end center" class="mobile-menu-header">
+  <mat-icon (click)="closeMenu()" class="close-button">close</mat-icon>
+</div>
+
+<div class="menu" fxLayout="column" fxLayoutGap="30px">
+  <a class="menu-item" (click)="closeMenu()" [routerLink]="item.url"
+     *ngFor="let item of menuItems">{{item.name}}</a>
+</div>

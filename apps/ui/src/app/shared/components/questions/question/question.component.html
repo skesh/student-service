@@ -1,0 +1,12 @@
+<div (click)="toggleOpen()" [class.active]="open" class="question" fxLayout
+     fxLayoutAlign="space-between center">
+  <span class="question">
+    {{question.question}}
+  </span>
+
+  <mat-icon class="expand" svgIcon="plus"></mat-icon>
+</div>
+
+<ng-container *ngIf="open">
+  <span class="answer" @fadeIn>{{question.answer}}</span>
+</ng-container>

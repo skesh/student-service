@@ -1,0 +1,197 @@
+<form [formGroup]="form" fxLayout="column">
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="Основное">
+      <mat-card>
+        <div fxLayout="column">
+
+          <div fxLayout fxLayoutGap="20px">
+            <mat-form-field fxFlex="50%">
+              <mat-label>Название</mat-label>
+              <input matInput formControlName="title" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="50%">
+              <input type="number" matInput placeholder="Количество дней" formControlName="days"
+                     autocomplete="off">
+            </mat-form-field>
+          </div>
+
+          <div fxLayout fxLayoutGap="20px">
+            <mat-form-field fxFlex="50%">
+              <mat-label>Тип программы</mat-label>
+              <mat-select formControlName="type">
+                <mat-option *ngFor="let type of types" [value]="type">{{typesEnum[type]}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="50%">
+              <mat-label>Страна</mat-label>
+              <mat-select formControlName="country">
+                <mat-option *ngFor="let country of countries$ | async" [value]="country.name">
+                  {{country.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout fxLayoutGap="20px" fxFlex="100%">
+            <mat-form-field fxFlex="50%">
+              <mat-label>Возраст (от)</mat-label>
+              <input matInput formControlName="ageFrom" autocomplete="off" type="number">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="50%">
+              <mat-label>Возраст (до)</mat-label>
+              <input matInput formControlName="ageTo" autocomplete="off" type="number">
+            </mat-form-field>
+          </div>
+
+          <app-file-uploader [directory]="'program-card-images'" [placeholder]="'Малое изображение
+            программы для каталога'" formControlName="smallImage" [hint]="'290x200px'">
+          </app-file-uploader>
+
+          <app-file-uploader [directory]="'program-card-images'" [placeholder]="'Большое изображение
+            программы в шапку'" formControlName="bigImage" [hint]="'1920x780px'">
+          </app-file-uploader>
+
+          <ckeditor [editor]="editor" formControlName="description"></ckeditor>
+
+          <div fxLayout>
+            <mat-slide-toggle formControlName="isHot">Горящий тур</mat-slide-toggle>
+          </div>
+
+        </div>
+      </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Включено">
+      <mat-card>
+        <app-dynamic-form [fields]="newIncludeFields" (save)="addInArray('includes', $event)">
+        </app-dynamic-form>
+      </mat-card>
+
+      <mat-list>
+        <mat-list-item *ngFor="let item of includes">
+          <mat-icon (click)="removeFromArray('includes', item)" color="primary">delete
+          </mat-icon>
+          <span>{{item.name}}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+
+    <mat-tab label="Расписание">
+      <mat-card>
+        <app-dynamic-form [fields]="newEventFields" (save)="addInArray('events', $event)">
+        </app-dynamic-form>
+      </mat-card>
+
+      <mat-list>
+        <mat-list-item *ngFor="let item of events">
+          <mat-icon (click)="removeFromArray('events', item)" color="primary">delete
+          </mat-icon>
+          <span>{{item.time | date: 'HH:mm'}} {{item.description}}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+
+    <mat-tab label="Вопросы">
+      <mat-card>
+        <app-dynamic-form [fields]="newQuestionFields" (save)="addInArray('questions', $event)">
+        </app-dynamic-form>
+      </mat-card>
+
+      <mat-list>
+        <mat-list-item *ngFor="let item of questions">
+          <mat-icon (click)="removeFromArray('questions', item)" color="primary">delete
+          </mat-icon>
+          <span><b>{{item.question}}:</b> {{item.answer}}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+
+    <mat-tab label="Фотографии">
+      <mat-card>
+        <app-file-uploader-emitter (save)="addInArray('photos', $event)"
+                                   [directory]="'programs-photos'">
+        </app-file-uploader-emitter>
+      </mat-card>
+
+      <div fxLayout fxLayout="column">
+        <app-file-viewer [url]="photo" *ngFor="let photo of photos"
+                         (remove)="removeFromArray('photos', $event)"></app-file-viewer>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Условия проживания">
+      <mat-card>
+        <app-dynamic-form [fields]="newResidenceFields" (save)="addInArray('residence', $event)">
+        </app-dynamic-form>
+      </mat-card>
+
+      <div fxLayout="column">
+        <app-file-viewer [text]="item.description" *ngFor="let item of residence"
+                         [url]="item.image.path" (remove)="removeFromArray('residence', item)">
+        </app-file-viewer>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Экскурсии">
+      <mat-card>
+        <app-dynamic-form [fields]="newExcursionFields" (save)="addInArray('excursions', $event)">
+        </app-dynamic-form>
+      </mat-card>
+
+      <mat-list>
+        <mat-list-item *ngFor="let excursion of excursions">
+          <button mat-icon-button (click)="removeFromArray('excursions', excursion)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <div fxLayout fxLayoutGap="8px">
+            <span>[{{excursion.week}} неделя]</span>
+            <span>{{excursion.title}}</span>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
+</form>
+
+<div class="action-button" fxLayout fxLayoutAlign="end">
+  <button mat-raised-button [disabled]="form.invalid" (click)="save()">Сохранить программу</button>
+</div>
+
+<table mat-table [dataSource]="programs$ | async" matSort>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Название</th>
+    <td mat-cell *matCellDef="let element">{{element.title}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Тип</th>
+    <td mat-cell *matCellDef="let element">{{typesEnum[element.type]}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Аргументация</th>
+    <td mat-cell *matCellDef="let element">
+      <div fxLayout fxLayoutAlign="space-between center">{{element.description}}</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Действия</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="edit(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="delete(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

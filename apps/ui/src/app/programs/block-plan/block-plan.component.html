@@ -1,0 +1,13 @@
+<div class="plan-block" *ngFor="let excursion of excursions">
+  <div fxLayout>
+    <div class="date">
+      <span class="time">{{excursion.week}}</span>
+      <span class="time-unit">неделя</span>
+    </div>
+  </div>
+
+  <div class="details">
+    <div class="title">{{excursion.title}}</div>
+    <app-quote [text]="excursion.description" [maxLength]="180"></app-quote>
+  </div>
+</div>

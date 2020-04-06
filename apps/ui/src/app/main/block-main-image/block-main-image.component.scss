@@ -1,0 +1,142 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  display: flex;
+  background-color: var(--color-purple);
+
+  @include layout-bp(lt-lg) {
+    background-image: url('/assets/images/Teture_for_Plane.png');
+    justify-content: center;
+  }
+
+  @include layout-bp(gt-md) {
+    background-image: url('/assets/images/BG_General-100.jpg');
+    height: 725px;
+    background-position-x: center;
+    align-items: center;
+  }
+}
+
+.main-image {
+  @include layout-bp(gt-md) {
+    width: 450px;
+  }
+}
+
+.title {
+  color: white;
+
+  @include layout-bp(lt-lg) {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 39px;
+    line-height: 46px;
+  }
+
+  @include layout-bp(gt-md) {
+    font-size: 52px;
+    line-height: 50px;
+  }
+}
+
+.point {
+  display: flex;
+  color: white;
+  text-decoration: unset;
+
+  @include layout-bp(gt-md) {
+    height: 72px;
+    line-height: 30px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px dashed white;
+    padding-right: 40px;
+    cursor: pointer;
+
+    &:first-child {
+      border-top: 1px dashed white;
+    }
+  }
+
+  @include layout-bp(lt-lg) {
+    height: 53px;
+    width: 250px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.name {
+  font: 30px var(--rounded-bold);
+
+  @include layout-bp(lt-lg) {
+    text-align: center;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: var(--rounded-extra-bold);
+    text-transform: uppercase;
+  }
+}
+
+.second {
+  font-size: 21px;
+  line-height: 21px;
+
+  @include layout-bp(lt-lg) {
+    font-size: 13px;
+    font-family: var(--rounded-extra-bold);
+    line-height: 16px;
+    text-transform: uppercase;
+  }
+}
+
+.orange {
+  .arrow {
+    color: var(--color-orange);
+  }
+
+  @include layout-bp(gt-md) {
+    &:hover {
+      color: var(--color-orange);
+      background: linear-gradient(to right, rgba(243, 132, 34, 0), rgba(243, 132, 34, 0.2));
+    }
+  }
+
+  @include layout-bp(lt-lg) {
+    background-color: var(--color-orange);
+  }
+}
+
+.green {
+  .arrow {
+    color: var(--color-green);
+  }
+
+  @include layout-bp(gt-md) {
+    &:hover {
+      color: var(--color-green);
+      background: linear-gradient(to right, rgba(80, 166, 40, 0), rgba(80, 166, 40, 0.2));
+    }
+  }
+
+  @include layout-bp(lt-lg) {
+    background-color: var(--color-green);
+  }
+}
+
+.blue {
+  .arrow {
+    color: var(--color-blue);
+  }
+
+  @include layout-bp(gt-md) {
+    &:hover {
+      color: var(--color-blue);
+      background: linear-gradient(to right, rgba(52, 113, 235, 0), rgba(52, 113, 235, 0.2));
+    }
+  }
+
+  @include layout-bp(lt-lg) {
+    background-color: var(--color-blue);
+  }
+}

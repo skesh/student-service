@@ -1,0 +1,9 @@
+<div class="container" fxLayout="column" fxLayoutGap.gt-md="40px" fxLayoutGap.lt-lg="30px">
+  <ng-container *ngIf="title">
+    <div fxLayout [fxLayoutAlign]="titlePosition">
+      <h1 [class.--thin]="thinTitle" [class.white]="isDark">{{title}}</h1>
+    </div>
+  </ng-container>
+
+  <ng-content></ng-content>
+</div>

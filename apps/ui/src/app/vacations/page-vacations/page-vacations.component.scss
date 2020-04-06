@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white-dark);
+}
+
+.bigImage {
+  display: flex;
+  background-color: green;
+  width: 850px;
+  height: 600px;
+}
+
+.smallImage {
+  display: flex;
+  width: 420px;
+  height: 296px;
+  background-color: aqua;
+}
+
+.vacations-image {
+  display: flex;
+  width: 1200px;
+  height: 1279px;
+  background-image: url('/assets/images/vacations-images.png');
+  margin: 0 auto;
+  background-repeat: no-repeat;
+}
+
+.quote {
+  color: #d2d2d2;
+  margin-right: 30px;
+  height: 20px;
+  width: 28px;
+  flex-shrink: 0;
+}

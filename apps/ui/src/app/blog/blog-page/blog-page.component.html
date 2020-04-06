@@ -1,0 +1,22 @@
+<div class="articles-filter airlines">
+  <div class="container grid40">
+    <h1 class="white">Статьи</h1>
+
+    <div fxLayout fxLayoutAlign="space-between">
+      <div fxLayout fxLayoutGap.gt-md="20px" fxLayoutGap.lt-lg="10px">
+        <button class="rounded btn-orange" (click)="setFilter(null)"
+                [class.active]="!filterType">Все</button>
+        <button class="rounded btn-orange" *ngFor="let type of articleTypes"
+                (click)="setFilter(type)"
+                [class.active]="filterType === type">{{articleTypesEnum[type]}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="articles$ | async as articles">
+  <div class="grid">
+    <app-article-card [article]="article" *ngFor="let article of filter(articles)">
+    </app-article-card>
+  </div>
+</ng-container>

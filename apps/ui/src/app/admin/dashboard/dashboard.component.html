@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" fxLayout fxLayoutAlign="space-between center">
+  <span>Панель управления</span>
+  <button mat-button *ngIf="auth.isLoggedIn" (click)="auth.logout()">Выход</button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let route of routes" [routerLink]="route.url"
+                     [routerLinkActive]="'active'">{{route.name}}</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,126 @@
+@import '~@angular/flex-layout/mq';
+
+:host {
+  background-color: var(--color-white-grey);
+}
+
+.airlines {
+  background-color: var(--color-blue-sky);
+
+  @include layout-bp(gt-md) {
+    height: 500px;
+  }
+
+  .container {
+    @include layout-bp(gt-md) {
+      margin-top: 72px;
+      height: 428px;
+    }
+
+    @include layout-bp(lt-lg) {
+      margin: 35px 20px 0;
+    }
+  }
+
+  h1 {
+    color: white;
+  }
+
+  .annotation {
+    color: white;
+    font-family: var(--rounded-light);
+    margin-top: 5px;
+
+    @include layout-bp(gt-md) {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    @include layout-bp(lt-lg) {
+      font-size: 13.5px;
+      line-height: 16.5px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+  .left-block {
+    display: flex;
+
+    @include layout-bp(gt-md) {
+      width: 640px;
+    }
+  }
+
+  .right-block {
+    display: flex;
+
+    @include layout-bp(gt-md) {
+      margin-left: auto;
+    }
+
+    @include layout-bp(lt-lg) {
+      margin-top: 10px;
+      justify-content: center;
+    }
+  }
+
+  .passport {
+    display: flex;
+    background-image: url('/assets/images/Visa-100.png');
+    background-size: cover;
+
+    @include layout-bp(gt-md) {
+      height: 427px;
+      width: 620px;
+    }
+
+    @include layout-bp(lt-lg) {
+      height: 178px;
+      width: 259px;
+    }
+  }
+
+  .quote {
+    display: flex;
+
+    @include layout-bp(gt-md) {
+      margin-top: 40px;
+    }
+
+    @include layout-bp(lt-lg) {
+      margin-top: 30px;
+    }
+
+    .icon {
+      height: 20px;
+      width: 28px;
+      flex-shrink: 0;
+      fill: var(--color-white);
+      line-height: 29px;
+      margin-right: 30px;
+      margin-top: 6px;
+    }
+
+    .text {
+      font-family: var(--rounded-medium);
+      color: var(--color-white);
+
+      @include layout-bp(gt-md) {
+        line-height: 29px;
+        font-size: 18px;
+      }
+
+      @include layout-bp(lt-lg) {
+        line-height: 22px;
+        font-size: 13.5px;
+      }
+    }
+  }
+}
+
+.price {
+  @include layout-bp(lt-lg) {
+    overflow-x: scroll;
+  }
+}
