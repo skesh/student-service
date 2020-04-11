@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { AfsService } from '../../core/afs.service';
 import { DynamicFormComponent } from '../../dynamic-form/dynamic-form/dynamic-form.component';
 import { FieldBase } from '../../dynamic-form/models/field-base.class';
@@ -17,8 +18,8 @@ import { Article } from '../../shared/interfaces/article.interface';
 })
 export class ArticlesManagerComponent implements OnInit {
   @ViewChild(DynamicFormComponent, { static: false }) form: DynamicFormComponent;
-  displayedColumns = ['name', 'type', 'created', 'actions'];
-  articles$: Observable<Article[]> = this.afs.getItems('articles');
+  displayedColumns = ['name', 'type', 'actions'];
+  articles$: Observable<Article[]> = this.afs.getItems('articles').pipe(tap(console.log));
   articleTypesEnum = ArticleTypes;
   selectedArticle: Article;
 
@@ -60,12 +61,6 @@ export class ArticlesManagerComponent implements OnInit {
 
   add(article: Article) {
     this.afs.updateOrAdd('articles', article);
-    // if (this.selectedArticle.id) {
-    //   this.afs.updateItem('articles', this.selectedArticle.id, article);
-    // } else {
-    //   article.created = new Date();
-    //   this.afs.addItem('articles', article);
-    // }
     this.selectedArticle = null;
   }
 
