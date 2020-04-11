@@ -11,11 +11,11 @@ export class BlockMapComponent implements OnInit {
     { label: 'Америка', image: '/assets/images/maps/Map_USA@2x.png' },
     { label: 'Канада', image: '/assets/images/maps/Map_Canada@2x.png' },
     { label: 'Австралия', image: '/assets/images/maps/Map_Australia@2x.png' },
-    { label: 'Новая Зеландия', image: '/assets/images/maps/Map_Australia@2x.png' },
-    { label: 'Англия', image: '/assets/images/maps/Map_Australia@2x.png' },
-    { label: 'Европа', image: '/assets/images/maps/Map_Australia@2x.png' },
+    { label: 'Новая Зеландия', image: '/assets/images/maps/New_Zealand@2x.png' },
+    { label: 'Англия', image: '/assets/images/maps/England_1@2x.png' },
+    { label: 'Европа', image: '/assets/images/maps/Europa@2x.png' },
     { label: 'Филлипины', image: '/assets/images/maps/Map_Philippines@2x.png' },
-    { label: 'Китай', image: '/assets/images/maps/Map_Czech@2x.png' },
+    { label: 'Китай', image: '/assets/images/maps/China_1@2x.png' },
     { label: 'Япония', image: '/assets/images/maps/Map_Japan@2x.png' },
   ];
   selectedCountry = this.countries[0];
