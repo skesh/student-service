@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { AfsService } from '../../core/afs.service';
 import { DynamicFormComponent } from '../../dynamic-form/dynamic-form/dynamic-form.component';
 import { FieldBase } from '../../dynamic-form/models/field-base.class';
 import { FileField } from '../../dynamic-form/models/field-file.class';
+import { HiddenTextField } from '../../dynamic-form/models/field-hidden-text.class';
 import { HtmlEditorField } from '../../dynamic-form/models/field-html-editor.class';
 import { SelectField } from '../../dynamic-form/models/field-select.class';
 import { TextField } from '../../dynamic-form/models/field-text.class';
@@ -19,11 +19,15 @@ import { Article } from '../../shared/interfaces/article.interface';
 export class ArticlesManagerComponent implements OnInit {
   @ViewChild(DynamicFormComponent, { static: false }) form: DynamicFormComponent;
   displayedColumns = ['name', 'type', 'actions'];
-  articles$: Observable<Article[]> = this.afs.getItems('articles').pipe(tap(console.log));
+  articles$: Observable<Article[]> = this.afs.getItems('articles');
   articleTypesEnum = ArticleTypes;
   selectedArticle: Article;
 
   articleFields: FieldBase<any>[] = [
+    new HiddenTextField({
+      key: 'id',
+    }),
+
     new TextField({
       key: 'name',
       label: 'Название статьи',

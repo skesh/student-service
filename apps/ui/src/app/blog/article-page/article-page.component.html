@@ -12,6 +12,7 @@
       </ng-container>
     </div>
 
-    <div class="article-content" [innerHTML]="article.text"></div>
+    <div class="article-content" [innerHTML]="article.text | safe: 'html'">
+    </div>
   </div>
 </ng-container>

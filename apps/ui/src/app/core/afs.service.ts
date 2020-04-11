@@ -11,13 +11,13 @@ export class AfsService {
       .collection(collectionName)
       .snapshotChanges()
       .pipe(
-        map(doc =>
+        map((doc) =>
           doc.map((item: DocumentChangeAction<any>) => {
             const data = item.payload.doc.data();
             const id = item.payload.doc.id;
             return { id, ...data };
-          }),
-        ),
+          })
+        )
       );
   }
 
@@ -40,10 +40,7 @@ export class AfsService {
   }
 
   updateOrAdd(collectionName: string, item: any) {
-    const id = item.id;
-    delete item.id;
-
-    item.id ? this.updateItem(collectionName, id, item) : this.addItem(collectionName, item);
+    item?.id ? this.updateItem(collectionName, item.id, item) : this.addItem(collectionName, item);
   }
 
   getItemById(collectionName: string, id: string) {
@@ -56,7 +53,7 @@ export class AfsService {
           const data = doc.payload.data();
           const id = doc.payload.id;
           return { id, ...data };
-        }),
+        })
       );
   }
 

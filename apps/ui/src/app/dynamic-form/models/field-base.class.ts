@@ -1,4 +1,5 @@
 export class FieldBase<T> {
+  id: string;
   value: T;
   key: string;
   label: string;
@@ -14,6 +15,7 @@ export class FieldBase<T> {
 
   constructor(
     options: {
+      id?: string;
       value?: T;
       key?: string;
       label?: string;
@@ -27,6 +29,7 @@ export class FieldBase<T> {
       hint?: string;
     } = {}
   ) {
+    this.id = options.id || null;
     this.value = options.value;
     this.key = options.key || '';
     this.label = options.label || '';
