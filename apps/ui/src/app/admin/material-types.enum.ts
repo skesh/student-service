@@ -5,7 +5,7 @@ export enum MaterialType {
   articles = 'articles',
   country = 'country',
   feedbacks = 'feedbacks',
-  professions = 'professions',
+  profession = 'profession',
   questions = 'questions',
   reviews = 'reviews',
   visa = 'visa',

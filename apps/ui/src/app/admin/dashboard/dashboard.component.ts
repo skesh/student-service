@@ -11,7 +11,7 @@ export class DashboardComponent {
     { name: 'Программы', url: '/admin/programs' },
     { name: 'Смены', url: '/admin/tours' },
     { name: 'Статьи', url: '/admin/articles' },
-    { name: 'Страны', url: '/admin/countries' },
+    { name: 'Страны', url: '/admin/country' },
     { name: 'Отзывы', url: '/admin/reviews' },
     { name: 'Визы', url: '/admin/visa' },
     // { name: 'Преимущества', url: '/admin/advantages' },

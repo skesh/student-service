@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FieldControlService } from '../field-control.service';
 import { FieldBase } from '../models/field-base.class';
@@ -8,7 +16,7 @@ import { FieldBase } from '../models/field-base.class';
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
 })
-export class DynamicFormComponent implements OnInit {
+export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() fields: FieldBase<any>[] = [];
   @Output() save = new EventEmitter();
 
@@ -18,6 +26,12 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fcs.toFormGroup(this.fields);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.fields.currentValue !== changes.fields.previousValue) {
+      this.form = this.fcs.toFormGroup(changes.fields.currentValue);
+    }
   }
 
   onSubmit() {

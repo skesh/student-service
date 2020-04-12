@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { AfsService } from '../../core/afs.service';
 import { FieldBase } from '../../dynamic-form/models/field-base.class';
 import { FileField } from '../../dynamic-form/models/field-file.class';
@@ -11,7 +11,7 @@ import { TimeField } from '../../dynamic-form/models/field-time.class';
 import { BaseFile } from '../../shared/components/file-uploader/file-uploader.component';
 import { AdvantageTypes } from '../../shared/enums/advantage-types.enum';
 import { Program } from '../../shared/interfaces/program.interface';
-import { AppState, selectPrograms } from '../../store';
+import { AppState } from '../../store';
 import { ProgramAdd, ProgramDelete, ProgramUpdate } from '../../store/programs.actions';
 
 @Component({
@@ -20,12 +20,13 @@ import { ProgramAdd, ProgramDelete, ProgramUpdate } from '../../store/programs.a
   styleUrls: ['./programs-manager.component.scss'],
 })
 export class ProgramsManagerComponent {
-  displayedColumns = ['name', 'type', 'description', 'actions'];
+  displayedColumns = ['name', 'type', 'actions'];
   typesEnum = AdvantageTypes;
   form: FormGroup;
   editor = ClassicEditor;
 
-  programs$ = this.store.pipe(select(selectPrograms));
+  // programs$ = this.store.pipe(select(selectPrograms));
+  programs$ = this.afs.getItems('programs');
   countries$ = this.afs.getItems('country');
 
   constructor(private fb: FormBuilder, private store: Store<AppState>, private afs: AfsService) {
@@ -167,7 +168,7 @@ export class ProgramsManagerComponent {
 
   removeFromArray(arrayName: string, item: any) {
     const field = this.form.get(arrayName);
-    field.setValue(field.value.filter(el => el !== item));
+    field.setValue(field.value.filter((el) => el !== item));
   }
 
   edit(program) {
