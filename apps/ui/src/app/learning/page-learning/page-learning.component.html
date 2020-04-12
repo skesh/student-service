@@ -1,10 +1,9 @@
 <div class="airlines info-page-header --orange">
   <div class="container">
-    <div fxLayout="column"
-         fxLayoutAlign="start center">
+    <div fxLayout="column" fxLayoutAlign="start center">
       <span class="header-title">Образование за рубежом</span>
 
-      <span class="header-text">Компания Students Service предлагает своим клиентам широкий
+      <span class="header-text">Компания Student's Service предлагает своим клиентам широкий
         спектр<br>программ обучения
         за рубежом для взрослых и детей.</span>
 
@@ -12,9 +11,7 @@
     </div>
 
     <div class="tabs --orange">
-      <div *ngFor="let tab of tabs.options"
-           [class.active]="tab === tabs.active"
-           class="tab"
+      <div *ngFor="let tab of tabs.options" [class.active]="tab === tabs.active" class="tab"
            (click)="tabs.active = tab">{{tab}}</div>
     </div>
   </div>
@@ -22,33 +19,26 @@
 
 <ng-container *ngIf="tabs.active === 'Обучение'">
   <ng-container *ngIf="offers$ | async as offers">
-    <app-block [title]="'Мы вам предлагаем:'"
-               [color]="'grey'"
-               *ngIf="offers.length">
+    <app-block [title]="'Мы вам предлагаем:'" [color]="'grey'" *ngIf="offers.length">
       <app-block-offers [offers]="offers"></app-block-offers>
     </app-block>
   </ng-container>
 
   <ng-container *ngIf="reviews$ | async as reviews">
-    <app-block [title]="'Отзывы участников'"
-               [color]="'grey'"
-               *ngIf="reviews.length">
+    <app-block [title]="'Отзывы участников'" [color]="'grey'" *ngIf="reviews.length">
       <app-block-reviews [reviews]="reviews"></app-block-reviews>
     </app-block>
   </ng-container>
 
   <ng-container *ngIf="upcommingPrograms$ | async as programs">
-    <app-block [color]="'white'"
-               [title]="'Ближайшие смены'"
-               *ngIf="programs.length">
+    <app-block [color]="'white'" [title]="'Ближайшие смены'" *ngIf="programs.length">
       <app-block-programs [programs]="programs"></app-block-programs>
     </app-block>
   </ng-container>
 
   <ng-container *ngIf="questions$ | async as questions">
     <ng-container *ngIf="questions.length">
-      <app-block [color]="'grey'"
-                 [title]="'Часто задаваемые вопросы'">
+      <app-block [color]="'grey'" [title]="'Часто задаваемые вопросы'">
         <app-questions [questions]="questions"></app-questions>
       </app-block>
     </ng-container>
@@ -56,8 +46,7 @@
 </ng-container>
 
 <ng-container *ngIf="tabs.active === 'Программы'">
-  <app-block [color]="'grey'"
-             *ngIf="programs$ | async as programs">
+  <app-block [color]="'grey'" *ngIf="programs$ | async as programs">
     <app-programs-grid [programs]="programs"></app-programs-grid>
   </app-block>
 </ng-container>
