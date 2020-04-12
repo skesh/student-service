@@ -20,10 +20,10 @@
     </mat-form-field>
 
     <mat-form-field *ngSwitchCase="'datefield'">
-      <input [owlDateTime]="eventDateOwl" [owlDateTimeTrigger]="eventDateOwl" matInput
-             [placeholder]="field.label" [formControlName]="field.key" autocomplete="off">
-
-      <owl-date-time #eventDateOwl [pickerType]="'calendar'"></owl-date-time>
+      <mat-label>{{ field.label }}</mat-label>
+      <input matInput [matDatepicker]="picker" [formControlName]="field.key" autocomplete="off">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <app-file-uploader [formControlName]="field.key" *ngSwitchCase="'filefield'"

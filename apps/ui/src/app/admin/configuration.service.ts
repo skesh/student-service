@@ -164,7 +164,7 @@ export class ConfigurationService {
           required: true,
         }),
 
-        new NumberField({
+        new TextField({
           key: 'price',
           label: 'Стоимость',
           required: true,

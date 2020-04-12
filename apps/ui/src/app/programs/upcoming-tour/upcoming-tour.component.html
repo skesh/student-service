@@ -1,13 +1,11 @@
-<div fxLayout="column"
-     fxLayoutGap="12px"
-     class="body">
+<div fxLayout="column" fxLayoutGap="12px" class="body">
   <span class="tour-dates">{{tour.dateStart | date: 'dd MMM'}} - {{tour.dateEnd | date: 'dd
         MMM yyyy'}}</span>
   <span class="tour-seats">Свободно: {{haveSeats}} из {{tour.seats}} мест</span>
 </div>
 
 <div class="price">
-  <ng-container *ngIf="price$ | async as price">
-    <span>{{price | currency:'RUB'}}</span>
-  </ng-container>
+  <!-- <ng-container *ngIf="price$ | async as price"> -->
+  <span>{{tour.price}}</span>
+  <!-- </ng-container> -->
 </div>
