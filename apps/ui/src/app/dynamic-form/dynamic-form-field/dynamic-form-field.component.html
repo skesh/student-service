@@ -33,8 +33,10 @@
 
     <mat-form-field *ngSwitchCase="'selectfield'">
       <mat-label>{{field.label}}</mat-label>
+
       <mat-select [formControlName]="field.key">
-        <mat-option *ngFor="let option of field.options" [value]="option[field.optionValue]">
+        <mat-option *ngFor="let option of field?.options | async"
+                    [value]="option[field.optionValue]">
           {{option[field.optionLabel]}}
         </mat-option>
       </mat-select>

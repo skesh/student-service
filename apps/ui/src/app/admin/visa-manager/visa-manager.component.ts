@@ -24,12 +24,10 @@ export class VisaManagerComponent implements OnInit, OnDestroy {
   visaTypeEnum = VisaTypeEnum;
   countries$ = this.afs.getItems('country');
 
-  get visaTypes() {
-    return Object.entries(VisaTypeEnum).map((type) => ({
-      label: type[1],
-      value: type[0],
-    }));
-  }
+  visaTypes = Object.entries(VisaTypeEnum).map((type) => ({
+    label: type[1],
+    value: type[0],
+  }));
 
   constructor(private afs: AfsService, private store: Store<AppState>) {
     this.afs
