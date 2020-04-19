@@ -8,7 +8,6 @@ import { FieldBase } from '../dynamic-form/models/field-base.class';
 import { BooleanField } from '../dynamic-form/models/field-boolean.class';
 import { DateField } from '../dynamic-form/models/field-date.class';
 import { FileField } from '../dynamic-form/models/field-file.class';
-import { HiddenTextField } from '../dynamic-form/models/field-hidden-text.class';
 import { HtmlEditorField } from '../dynamic-form/models/field-html-editor.class';
 import { NumberField } from '../dynamic-form/models/field-number.class';
 import { SelectField } from '../dynamic-form/models/field-select.class';
@@ -41,10 +40,6 @@ export class ConfigurationService {
     [
       MaterialType.offers,
       [
-        new HiddenTextField({
-          key: 'id',
-        }),
-
         new TextField({
           key: 'title',
           label: 'Заголовок',
@@ -70,14 +65,10 @@ export class ConfigurationService {
     [
       MaterialType.visa,
       [
-        new HiddenTextField({
-          key: 'id',
-        }),
-
         new SelectField({
           key: 'countryId',
           label: 'Страна',
-          options: this.countries$,
+          options: this.afs.getItems('country'),
           optionLabel: 'name',
           optionValue: 'id',
           required: true,
@@ -127,15 +118,11 @@ export class ConfigurationService {
     [
       MaterialType.tours,
       [
-        new HiddenTextField({
-          key: 'id',
-        }),
-
         new SelectField({
           key: 'programId',
           label: 'Программа',
           required: true,
-          options: this.programs$,
+          options: this.afs.getItems('programs'),
           optionLabel: 'title',
           optionValue: 'id',
         }),
@@ -174,10 +161,6 @@ export class ConfigurationService {
     [
       MaterialType.articles,
       [
-        new HiddenTextField({
-          key: 'id',
-        }),
-
         new TextField({
           key: 'name',
           label: 'Название статьи',
@@ -216,10 +199,6 @@ export class ConfigurationService {
     [
       MaterialType.country,
       [
-        new HiddenTextField({
-          key: 'id',
-        }),
-
         new TextField({
           key: 'name',
           label: 'Название страны',
@@ -242,7 +221,7 @@ export class ConfigurationService {
           key: 'programId',
           label: 'Программа',
           required: true,
-          options: this.programs$,
+          options: this.afs.getItems('programs'),
           optionLabel: 'title',
           optionValue: 'id',
         }),

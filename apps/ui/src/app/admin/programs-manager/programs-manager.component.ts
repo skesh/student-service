@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Store } from '@ngrx/store';
 import { AfsService } from '../../core/afs.service';
 import { FieldBase } from '../../dynamic-form/models/field-base.class';
@@ -23,9 +22,7 @@ export class ProgramsManagerComponent {
   displayedColumns = ['name', 'type', 'actions'];
   typesEnum = AdvantageTypes;
   form: FormGroup;
-  editor = ClassicEditor;
 
-  // programs$ = this.store.pipe(select(selectPrograms));
   programs$ = this.afs.getItems('programs');
   countries$ = this.afs.getItems('country');
 

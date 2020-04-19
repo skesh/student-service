@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
@@ -14,11 +14,12 @@ import { MaterialType } from '../material-types.enum';
 })
 export class AdminBase {
   @ViewChild(DynamicFormComponent, { static: false }) form: DynamicFormComponent;
+  selectedItem: any;
 
   collectionName: string;
   type$: Observable<string | MaterialType> = this.route.params.pipe(
     map((params) => params.type),
-    tap(console.log)
+    tap((_) => (this.selectedItem = null))
   );
 
   fields$ = this.type$.pipe(
@@ -34,53 +35,35 @@ export class AdminBase {
       return columns;
     })
   );
-  items$: Observable<any> = this.type$.pipe(
-    switchMap((type) => this.afs.getItems(type)),
-    tap(console.log)
-  );
+
+  items$: Observable<any> = this.type$.pipe(switchMap((type) => this.afs.getItems(type)));
 
   constructor(
     private afs: AfsService,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef,
     private fieldsService: ConfigurationService
   ) {
     this.collectionName = this.route.snapshot.params.type;
-    // this.items$ = this.afs.getItems(this.collectionName);
-    // this.fields = MaterialFields.get(this.type);
-    // this.tableConfig = MaterialColumns.get(this.type);
-
-    // this.route.params
-    //   .pipe(
-    //     tap((_) => {
-    //       cdr.detach();
-    //       setInterval(() => {
-    //         this.cdr.detectChanges();
-    //       }, 5000);
-    //     })
-    //   )
-    //   .subscribe();
   }
 
   get type() {
     return MaterialType[this.collectionName];
   }
 
-  // get columns() {
-  //   const columns = this.tableConfig.reduce((acc, curr) => acc.concat(curr.field), []);
-  //   columns.push('actions');
-  //   return columns;
-  // }
-
   save(item: any) {
-    this.afs.updateOrAdd(this.collectionName, item);
+    this.selectedItem?.id
+      ? this.afs.updateItem(this.collectionName, this.selectedItem.id, item)
+      : this.afs.addItem(this.collectionName, item);
+    this.selectedItem = null;
   }
 
   edit(item: any) {
+    this.selectedItem = item;
     this.form.form.patchValue(item);
   }
 
   delete(id: string) {
     this.afs.deleteItem(this.collectionName, id);
+    this.selectedItem = null;
   }
 }

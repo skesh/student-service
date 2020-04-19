@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DynamicFormModule } from '../dynamic-form/dynamic-form.module';
 import { DynamicFormComponent } from '../dynamic-form/dynamic-form/dynamic-form.component';
 import { SharedModule } from '../shared/shared.module';
@@ -30,9 +30,9 @@ import { ProgramsManagerComponent } from './programs-manager/programs-manager.co
     SharedModule,
     DynamicFormModule,
     AngularFireAuthModule,
-    CKEditorModule,
     ReactiveFormsModule,
     MatTabsModule,
+    AngularEditorModule,
   ],
   providers: [DynamicFormComponent, ConfigurationService, DatePipe],
 })

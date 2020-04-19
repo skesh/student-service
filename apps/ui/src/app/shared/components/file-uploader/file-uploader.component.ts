@@ -3,7 +3,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FileInput } from 'ngx-material-file-input';
 import { Subject } from 'rxjs';
-import { finalize, takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 
 export class BaseFile {
   name: string;
@@ -25,9 +25,9 @@ export class BaseFile {
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => FileUploaderComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class FileUploaderComponent implements OnDestroy {
   @Input() value: string;
@@ -71,7 +71,7 @@ export class FileUploaderComponent implements OnDestroy {
       .snapshotChanges()
       .pipe(
         takeUntil(this.destroy$),
-        finalize(() => {
+        tap(() => {
           this.writeValue(f.path);
           this.clearSelectedFile();
           this.isLoading = false;
@@ -81,7 +81,7 @@ export class FileUploaderComponent implements OnDestroy {
   }
 
   getPath = (name: string, directory?: string) =>
-    directory ? `${this.directory}/${name}` : `${name}`
+    directory ? `${this.directory}/${name}` : `${name}`;
 
   ngOnDestroy() {
     this.destroy$.next();
@@ -91,7 +91,7 @@ export class FileUploaderComponent implements OnDestroy {
   clear = () => {
     this.writeValue(null);
     this.clearSelectedFile();
-  }
+  };
 
   clearSelectedFile = () => (this.selectedFile = new FileInput([]));
 }
