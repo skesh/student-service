@@ -5,22 +5,24 @@
     <div fxLayout.gt-md="row" fxLayoutAlign.gt-md="space-between"
          fxLayoutAlign.lt-lg="center center" fxLayout.lt-lg="column" fxLayoutGap.lt-lg="10px">
       <div fxLayout fxLayoutGap.gt-md="20px" fxLayoutGap.lt-lg="15px">
-        <button class="rounded btn" *ngFor="let type of types" (click)="setFilter(type)"
-                [ngClass]="{'--blue': type === 'internship', '--green': type === 'vacations', 'active': type === state.type}">{{typesEnum[type]}}</button>
+        <button class="rounded btn" *ngFor="let programType of types"
+                (click)="setFilterType(programType)"
+                [ngClass]="{'--blue': programType === 'internship', '--green': programType === 'vacations', 'active': programType === type.value}">{{typesEnum[programType]}}</button>
       </div>
 
-      <div fxLayout fxLayoutGap.gt-md="20px" fxLayoutGap.lt-lg="15px" class="filters">
+      <div fxLayout fxLayoutGap.gt-md="20px" fxLayoutGap.lt-lg="15px" class="filters"
+           [formGroup]="filter">
         <ng-container *ngIf="countries$ | async as countries">
-          <app-select [(ngModel)]="state.country" [options]="countries" *ngIf="countries.length">
+          <app-select formControlName="country" [options]="countries" *ngIf="countries.length">
           </app-select>
         </ng-container>
 
         <ng-container *ngIf="ages$ | async as ages">
-          <app-select [(ngModel)]="state.age" [options]="ages" *ngIf="ages.length"></app-select>
+          <app-select formControlName="age" [options]="ages" *ngIf="ages.length"></app-select>
         </ng-container>
 
         <ng-container *ngIf="months$ | async as months">
-          <app-select [(ngModel)]="state.month" [options]="months" *ngIf="months.length">
+          <app-select formControlName="month" [options]="months" *ngIf="months.length">
           </app-select>
         </ng-container>
       </div>
@@ -29,7 +31,7 @@
   </div>
 </div>
 
-<ng-container *ngIf="filter(programs$ | async, tours$ | async) as programs">
+<div *ngIf="(filteredPrograms$ | async) as programs">
   <div class="content">
     <ng-container *ngIf="loading$ | async; else loaded">
       <div fxLayout fxLayoutAlign="center">
@@ -41,4 +43,4 @@
       <app-programs-grid [programs]="programs"></app-programs-grid>
     </ng-template>
   </div>
-</ng-container>
+</div>
