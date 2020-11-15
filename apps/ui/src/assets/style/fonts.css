@@ -1,44 +1,44 @@
 @font-face {
-  font-family: "Rounded";
-  src: url("/assets/fonts/Roundedmplus1c.ttf");
+  font-family: 'Rounded';
+  src: url('/assets/fonts/Roundedmplus1c.ttf');
 }
 
 @font-face {
-  font-family: "Rounded Black";
-  src: url("/assets/fonts/Roundedmplus1cblack.ttf");
+  font-family: 'Rounded Black';
+  src: url('/assets/fonts/Roundedmplus1cblack.ttf');
 }
 
 @font-face {
-  font-family: "Rounded Bold";
-  src: url("/assets/fonts/Roundedmplus1cbold.ttf");
+  font-family: 'Rounded Bold';
+  src: url('/assets/fonts/Roundedmplus1cbold.ttf');
 }
 
 @font-face {
-  font-family: "Rounded ExtraBold";
-  src: url("/assets/fonts/Roundedmplus1cextrabold.ttf");
+  font-family: 'Rounded ExtraBold';
+  src: url('/assets/fonts/Roundedmplus1cextrabold.ttf');
 }
 
 @font-face {
-  font-family: "Rounded Light";
-  src: url("/assets/fonts/Roundedmplus1clight.ttf");
+  font-family: 'Rounded Light';
+  src: url('/assets/fonts/Roundedmplus1clight.ttf');
 }
 
 @font-face {
-  font-family: "Rounded Thin";
-  src: url("/assets/fonts/Roundedmplus1cthin.ttf");
+  font-family: 'Rounded Thin';
+  src: url('/assets/fonts/Roundedmplus1cthin.ttf');
 }
 
 @font-face {
-  font-family: "Rounded Medium";
-  src: url("/assets/fonts/Roundedmplus1cmedium.ttf");
+  font-family: 'Rounded Medium';
+  src: url('/assets/fonts/Roundedmplus1cmedium.ttf');
 }
 
 :root {
-  --rounded: "Rounded";
-  --rounded-medium: "Rounded Medium";
-  --rounded-bold: "Rounded Bold";
-  --rounded-light: "Rounded Light";
-  --rounded-thin: "Rounded Thin";
-  --rounded-black: "Rounded black";
-  --rounded-extra-bold: "Rounded ExtraBold";
+  --rounded: 'Rounded';
+  --rounded-medium: 'Rounded Medium';
+  --rounded-bold: 'Rounded Bold';
+  --rounded-light: 'Rounded Light';
+  --rounded-thin: 'Rounded Thin';
+  --rounded-black: 'Rounded black';
+  --rounded-extra-bold: 'Rounded ExtraBold';
 }
