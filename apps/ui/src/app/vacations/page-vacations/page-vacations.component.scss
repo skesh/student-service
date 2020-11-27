@@ -27,8 +27,8 @@
 
   @include layout-bp(lt-lg) {
     background-image: url('/assets/images/vacations-images-mobile.jpg');
-    width: 640px;
-    height: 4168px;
+    width: 320px;
+    height: 2084px;
   }
 
   @include layout-bp(gt-md) {
