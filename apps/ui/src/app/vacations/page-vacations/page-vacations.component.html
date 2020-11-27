@@ -11,8 +11,8 @@
     </div>
 
     <div class="tabs --green">
-      <div *ngFor="let tab of tabs.options" [class.active]="tab == tabs.active" class="tab"
-           (click)="tabs.active = tab">{{tab}}</div>
+      <div *ngFor="let tab of tabs.options" [class.active]="tab == tabs.active" class="tab" (click)="tabs.active = tab">
+        {{tab}}</div>
     </div>
   </div>
 </div>
@@ -25,7 +25,7 @@
     </div>
   </app-block>
 
-  <app-block [color]="'white'" fxHide.lt-lg>
+  <app-block [color]="'white'">
     <div class="vacations-image"></div>
   </app-block>
 
