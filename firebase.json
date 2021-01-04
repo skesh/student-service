@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "dist/apps/ui",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "storage": {
+    "rules": "storage.firebase.rules"
+  }
+}
